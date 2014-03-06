@@ -12,9 +12,8 @@
 
 
 // Include theme-specific fonts
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,700);
-// @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
-
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700);
+@import url(//fonts.googleapis.com/css?family=Lato:300);
 
 html * {
 	color-profile: sRGB;
@@ -40,24 +39,24 @@ $greyDarkest: #222;
 $backgroundColor: $white;
 
 // Primary/body text
-$mainFont: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+$mainFont: 'Open Sans', Helvetica, Arial, sans-serif;
 $mainFontSize: 36px;
 $mainColor: $greyDarker;
 
 // Headings
-$headingMargin: 0 0 1rem 0;
-$headingFont: $mainFont;
+$headingMargin: 0 0 3rem 0;
+$headingFont: 'Lato', $mainFont;
 $headingFontWeight: 300;
 $headingColor: $greyMedium;
-$headingLineHeight: 0.9em;
-$headingLetterSpacing: 0.02em;
+$headingLineHeight: 1.4rem;
+$headingLetterSpacing: -0.1rem;
 $headingTextTransform: uppercase;
 $headingTextShadow: 0px 1px 1px rgba(0,0,0,0.2);
-$heading1TextShadow: $headingTextShadow;
+$heading1TextShadow: 0 1px 2px rgba(0,0,0,0.3);
 
 // Links and actions
 $linkColor: $salmon;
-$linkColorHover: lighten( $linkColor, 20% );
+$linkColorHover: darken( $linkColor, 20% );
 
 // Text selection
 $selectionBackgroundColor: #FF5E99;
@@ -90,11 +89,32 @@ $selectionColor: #fff;
 
 .reveal {
 
+	@import "../../../font-awesome/scss/font-awesome.scss";
+
+
 	letter-spacing: 0;
-	line-height: 1.4;
+	line-height: 1;
+
+	ul {
+		margin-left: $fa-li-width;
+		list-style-type: none;
+	}
 
 	li {
-		margin-bottom: 0.5rem;
+		margin-bottom: 1rem;
+	}
+
+	ul li:not(.no-bullet)::before {
+		content: "\f105";
+		font-size: 85%;
+		display: inline-block;
+		font-family: "FontAwesome";
+		font-weight: normal;
+		font-style: normal;
+		margin-left: -$fa-li-width;
+ 		width: $fa-li-width;
+	  text-align: center;
+	  opacity: 0.5;
 	}
 
 	section img.inline {
@@ -120,8 +140,23 @@ $selectionColor: #fff;
 		font-style: italic;
 		font-weight: 300;
 		opacity: 0.5;
-		font-size: .85em;
+		font-size: 75%;
 		display: block;
+		letter-spacing: 0;
+	}
+
+	a:not(.image):hover {
+		border-bottom: .15rem solid fade-out( $linkColor, .5 );
+	}
+
+
+	.bg-salmon {
+		color: $greyLight;
+
+		h1,h2,h3,h4,h5,h6 {
+			color: $white;
+		}
+
 	}
 
 }
