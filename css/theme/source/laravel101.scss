@@ -1,0 +1,127 @@
+/**
+ * Solarized Light theme for reveal.js.
+ * Author: Achim Staebler
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+
+// Include theme-specific fonts
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,700);
+// @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+
+html * {
+	color-profile: sRGB;
+	rendering-intent: auto;
+}
+
+
+// Laravel colors
+$salmon:			#f4726d;
+$white:				#fff;
+$greyLight:		#f5f5f5;
+$greyMedium:	#aaa;
+$greyDark:		#777;
+$greyDarker:	#333;
+$greyDarkest: #222;
+
+
+
+
+// Override theme settings (see ../template/settings.scss)
+
+// Background of the presentation
+$backgroundColor: $white;
+
+// Primary/body text
+$mainFont: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+$mainFontSize: 36px;
+$mainColor: $greyDarker;
+
+// Headings
+$headingMargin: 0 0 1rem 0;
+$headingFont: $mainFont;
+$headingFontWeight: 300;
+$headingColor: $greyMedium;
+$headingLineHeight: 0.9em;
+$headingLetterSpacing: 0.02em;
+$headingTextTransform: uppercase;
+$headingTextShadow: 0px 1px 1px rgba(0,0,0,0.2);
+$heading1TextShadow: $headingTextShadow;
+
+// Links and actions
+$linkColor: $salmon;
+$linkColorHover: lighten( $linkColor, 20% );
+
+// Text selection
+$selectionBackgroundColor: #FF5E99;
+$selectionColor: #fff;
+
+// Generates the presentation background, can be overridden
+// to return a background image or gradient
+@mixin bodyBackground() {
+	background: $backgroundColor;
+}
+
+// Background generator
+// @mixin bodyBackground() {
+// 	@include radial-gradient( rgba($base3,1), rgba(lighten($base3, 20%),1) );
+// }
+
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+
+// Extras
+
+.no-shadow {
+	box-shadow: none !important;
+}
+
+
+.reveal {
+
+	letter-spacing: 0;
+	line-height: 1.4;
+
+	li {
+		margin-bottom: 0.5rem;
+	}
+
+	section img.inline {
+		display: inline-block;
+		vertical-align: middle;
+		width: auto;
+		border: 0;
+
+		&.fixed-height {
+				height: 6em;
+		}
+
+	}
+
+	h3 {
+		text-align: left;
+		color: $greyDark;
+		text-transform: none;
+		font-weight: normal;
+	}
+
+	em.aside {
+		font-style: italic;
+		font-weight: 300;
+		opacity: 0.5;
+		font-size: .85em;
+		display: block;
+	}
+
+}
