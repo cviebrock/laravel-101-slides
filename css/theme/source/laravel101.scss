@@ -236,7 +236,7 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 			height: 100%;
 			width: auto;
 			border: 0;
-			box-shadow: 3px 3px 5px 2px rgba(0,0,0,.5);
+			box-shadow: 5px 5px 15px 4px rgba(0,0,0,.3);
 		}
 	}
 
@@ -246,11 +246,11 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 
 	.fragment.spin-in {
 		opacity: 0;
-		-webkit-transition: all .5s ease;
-		   -moz-transition: all .5s ease;
-		    -ms-transition: all .5s ease;
-		     -o-transition: all .5s ease;
-		        transition: all .5s ease;
+		-webkit-transition-duration: .5s;
+		   -moz-transition-duration: .5s;
+		    -ms-transition-duration: .5s;
+		     -o-transition-duration: .5s;
+		        transition-duration: .5s;
 
 		-webkit-transform: rotateZ( -359deg ) scale(0.1);
 		   -moz-transform: rotateZ( -359deg ) scale(0.1);
@@ -260,11 +260,19 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 	}
 	.fragment.spin-in.visible {
 		opacity: 1;
-		-webkit-transform: rotateZ( 10deg ) scale(1);
-		   -moz-transform: rotateZ( 10deg ) scale(1);
-		    -ms-transform: rotateZ( 10deg ) scale(1);
-		     -o-transform: rotateZ( 10deg ) scale(1);
-		        transform: rotateZ( 10deg ) scale(1);
+		-webkit-transform: rotateZ( 0 ) scale(1);
+		   -moz-transform: rotateZ( 0 ) scale(1);
+		    -ms-transform: rotateZ( 0 ) scale(1);
+		     -o-transform: rotateZ( 0 ) scale(1);
+		        transform: rotateZ( 0 ) scale(1);
+	}
+	.fragment.spin-in.skewed.visible {
+		opacity: 1;
+		-webkit-transform: rotateZ( 7deg ) scale(1);
+		   -moz-transform: rotateZ( 7deg ) scale(1);
+		    -ms-transform: rotateZ( 7deg ) scale(1);
+		     -o-transform: rotateZ( 7deg ) scale(1);
+		        transform: rotateZ( 7deg ) scale(1);
 	}
 
 }
