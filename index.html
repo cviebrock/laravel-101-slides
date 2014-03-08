@@ -12,7 +12,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/laravel101.css" id="theme">
-		<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -69,26 +68,70 @@
 						<li class="fragment roll-in">@cviebrock at
 							<a href="//github.com/cviebrock"> Github</a> and
 							<a href="//twitter.com/cviebrock"> Twitter</a>
-							<em class="aside fragment">&hellip; also on <a href="//ca.linkedin.com/in/colinviebrock/"> LinkedIn</a>!</em>
+							<span class="fragment">&hellip; also on <a href="//ca.linkedin.com/in/colinviebrock/"> LinkedIn</a></span>
 						</li>
 					</ul>
 				</section>
 
 
-				<section data-background="#f4726d" class="bg-salmon">
-					<h2>Laravel</h2>
+				<section data-background="#f4726d" class="bg-salmon" data-background-transition="slide">
+					<h1>Laravel</h1>
+					<p class="fragment">
+						A free, open source, MVC web-application framework.
+					</p>
+					<p class="fragment">
+						<a href="//getcomposer.org"><i class="fa fa-cloud-download"></i> laravel.com</a>
+					</p>
 				</section>
 
 				<section>
-					<h2>Getting Started</h2>
-					<h3>Prerequisites</h3>
+					<h2>Prerequisites</h2>
 					<ul>
-						<li class="fragment roll-in">
+						<li class="fragment roll-in">PHP 5.4.x
+							<em class="aside">was 5.3.7, but get with the times, folks!</em>
+						</li>
+						<li class="fragment roll-in">Mcrypt extension
+						</li>
+						<li class="fragment roll-in">JSON extension
+							<em class="aside">Not included by default in some PHP 5.5 distributions</em>
+						</li>
+						<li class="fragment roll-in">Composer
+							<em class="aside">
+								<a href="//getcomposer.org"><i class="fa fa-cloud-download"></i> getcomposer.org</a>
+								and install it globally!
+							</em>
+						</li>
 				</section>
 
 				<section>
-					<h2>Getting Started</h2>
-					<h3>Start a New Project</h3>
+					<h2>Starting a New Project</h2>
+					<div class="fragment">
+						<h3>Easiest</h3>
+						<pre><code data-trim class="bash">
+composer create-project laravel/laravel my-project --prefer-dist
+						</code></pre>
+					</div>
+
+					<div class="fragment">
+						<h3>Somewhat Easy</h3>
+						<pre><code data-trim class="bash">
+git clone git@github.com:laravel/laravel.git my-project
+cd my-project
+composer install
+						</code></pre>
+					</div>
+
+					<div class="fragment">
+						<h3>Hrm...</h3>
+						<pre><code data-trim class="bash">
+curl -L -O https://github.com/laravel/laravel/archive/master.zip
+unzip master.zip
+mv laravel-master my-project
+cd my-project
+composer install
+						</code></pre>
+					</div>
+
 				</section>
 
 
@@ -356,6 +399,10 @@ function linkify( selector ) {
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
+				width: 1440,
+				height: 1000,
+				margin: 0.15,
+
 				controls: true,
 				progress: true,
 				history: true,

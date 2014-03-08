@@ -36,11 +36,11 @@ body {
 .reveal h4,
 .reveal h5,
 .reveal h6 {
-  margin: 0 0 3rem 0;
+  margin: 0 0 0.5em 0;
   color: #aaaaaa;
   font-family: "Lato", "Open Sans", Helvetica, Arial, sans-serif;
-  line-height: 1.4rem;
-  letter-spacing: -0.1rem;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
   font-weight: 300;
   text-transform: uppercase;
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2); }
@@ -153,7 +153,7 @@ body {
   /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
      readers do not read off random characters that represent icons */
   letter-spacing: 0;
-  line-height: 1; }
+  line-height: 1 !important; }
 @font-face {
   .reveal {
     font-family: 'FontAwesome';
@@ -1075,10 +1075,10 @@ body {
     margin-left: 2.14286em;
     list-style-type: none; }
   .reveal li {
-    margin-bottom: 1rem; }
+    margin-bottom: 1em; }
   .reveal ul li:not(.no-bullet)::before {
     content: "\f105";
-    font-size: 85%;
+    font-size: .85em;
     display: inline-block;
     font-family: "FontAwesome";
     font-weight: normal;
@@ -1102,13 +1102,28 @@ body {
   .reveal em.aside {
     font-style: italic;
     font-weight: 300;
-    opacity: 0.5;
-    font-size: 75%;
+    color: #aaaaaa;
+    font-size: .65em;
     display: block;
     letter-spacing: 0; }
   .reveal a:not(.image):hover {
-    border-bottom: 0.15rem solid rgba(244, 114, 109, 0.5); }
+    border-bottom: 2px solid rgba(244, 114, 109, 0.5); }
   .reveal .bg-salmon {
     color: whitesmoke; }
-    .reveal .bg-salmon h1, .reveal .bg-salmon h2, .reveal .bg-salmon h3, .reveal .bg-salmon h4, .reveal .bg-salmon h5, .reveal .bg-salmon h6 {
+    .reveal .bg-salmon h1, .reveal .bg-salmon h2, .reveal .bg-salmon h3, .reveal .bg-salmon h4, .reveal .bg-salmon h5, .reveal .bg-salmon h6,
+    .reveal .bg-salmon a {
       color: white; }
+    .reveal .bg-salmon a:not(.image):hover {
+      color: white;
+      border-bottom-color: rgba(255, 255, 255, 0.5); }
+  .reveal pre, .reveal code {
+    font-family: "The Sans Mono Condensed", "Ubuntu Mono", monospace; }
+  .reveal pre {
+    font-size: .75em; }
+  .reveal pre code {
+    margin-bottom: 1em;
+    padding: 1em; }
+  .reveal h1 {
+    border-bottom: 2px solid; }
+  .reveal h2 {
+    border-bottom: 1px solid whitesmoke; }
