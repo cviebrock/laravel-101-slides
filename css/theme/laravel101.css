@@ -1,5 +1,6 @@
 @import url(//fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700);
 @import url(//fonts.googleapis.com/css?family=Lato:300);
+@import url(http://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise);
 /**
  * Solarized Light theme for reveal.js.
  * Author: Achim Staebler
@@ -7,6 +8,9 @@
 html * {
   color-profile: sRGB;
   rendering-intent: auto; }
+
+.steel {
+  background-color: #706da7; }
 
 /*********************************************
  * GLOBAL STYLES
@@ -93,31 +97,31 @@ body {
  *********************************************/
 .reveal .controls div.navigate-left,
 .reveal .controls div.navigate-left.enabled {
-  border-right-color: #f4726d; }
+  border-right-color: whitesmoke; }
 
 .reveal .controls div.navigate-right,
 .reveal .controls div.navigate-right.enabled {
-  border-left-color: #f4726d; }
+  border-left-color: whitesmoke; }
 
 .reveal .controls div.navigate-up,
 .reveal .controls div.navigate-up.enabled {
-  border-bottom-color: #f4726d; }
+  border-bottom-color: whitesmoke; }
 
 .reveal .controls div.navigate-down,
 .reveal .controls div.navigate-down.enabled {
-  border-top-color: #f4726d; }
+  border-top-color: whitesmoke; }
 
 .reveal .controls div.navigate-left.enabled:hover {
-  border-right-color: #e91a12; }
+  border-right-color: #aaaaaa; }
 
 .reveal .controls div.navigate-right.enabled:hover {
-  border-left-color: #e91a12; }
+  border-left-color: #aaaaaa; }
 
 .reveal .controls div.navigate-up.enabled:hover {
-  border-bottom-color: #e91a12; }
+  border-bottom-color: #aaaaaa; }
 
 .reveal .controls div.navigate-down.enabled:hover {
-  border-top-color: #e91a12; }
+  border-top-color: #aaaaaa; }
 
 /*********************************************
  * PROGRESS BAR
@@ -1071,6 +1075,13 @@ body {
     content: "\f195"; }
   .reveal .fa-plus-square-o:before {
     content: "\f196"; }
+  .reveal .handwriting {
+    font-family: 'Waiting for the Sunrise';
+    letter-spacing: 0;
+    color: rgba(51, 51, 51, 0.25);
+    -webkit-transform: rotate(-7deg);
+    transform: rotate(-7deg);
+    position: absolute; }
   .reveal ul {
     margin-left: 2.14286em;
     list-style-type: none; }
@@ -1087,6 +1098,10 @@ body {
     width: 2.14286em;
     text-align: center;
     opacity: 0.5; }
+  .reveal ul.folders li::before {
+    content: "\f07b"; }
+  .reveal ul.folders li.file::before {
+    content: "\f15c"; }
   .reveal section img.inline {
     display: inline-block;
     vertical-align: middle;
@@ -1108,12 +1123,14 @@ body {
     letter-spacing: 0; }
   .reveal a:not(.image):hover {
     border-bottom: 2px solid rgba(244, 114, 109, 0.5); }
-  .reveal .bg-salmon {
+  .reveal .bg-inverse {
     color: whitesmoke; }
-    .reveal .bg-salmon h1, .reveal .bg-salmon h2, .reveal .bg-salmon h3, .reveal .bg-salmon h4, .reveal .bg-salmon h5, .reveal .bg-salmon h6,
-    .reveal .bg-salmon a {
+    .reveal .bg-inverse .handwriting {
+      color: rgba(245, 245, 245, 0.6); }
+    .reveal .bg-inverse h1, .reveal .bg-inverse h2, .reveal .bg-inverse h3, .reveal .bg-inverse h4, .reveal .bg-inverse h5, .reveal .bg-inverse h6,
+    .reveal .bg-inverse a {
       color: white; }
-    .reveal .bg-salmon a:not(.image):hover {
+    .reveal .bg-inverse a:not(.image):hover {
       color: white;
       border-bottom-color: rgba(255, 255, 255, 0.5); }
   .reveal pre, .reveal code {
@@ -1123,7 +1140,9 @@ body {
   .reveal pre code {
     margin-bottom: 1em;
     padding: 1em; }
-  .reveal h1 {
+  .reveal h1:not(.no-border) {
     border-bottom: 2px solid; }
-  .reveal h2 {
+  .reveal h2:not(.no-border) {
     border-bottom: 1px solid whitesmoke; }
+  .reveal .fragment.visible:not(.current-fragment) .crossout {
+    text-decoration: line-through; }

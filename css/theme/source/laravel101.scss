@@ -14,6 +14,7 @@
 // Include theme-specific fonts
 @import url(//fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700);
 @import url(//fonts.googleapis.com/css?family=Lato:300);
+@import url(http://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise);
 
 html * {
 	color-profile: sRGB;
@@ -29,9 +30,11 @@ $greyMedium:	#aaa;
 $greyDark:		#777;
 $greyDarker:	#333;
 $greyDarkest: #222;
+$steel:				darken( #9f9dc4, 15%);
 
-
-
+.steel {
+	background-color: $steel;
+}
 
 // Override theme settings (see ../template/settings.scss)
 
@@ -57,6 +60,10 @@ $heading1TextShadow: 0 1px 2px rgba(0,0,0,0.3);
 // Links and actions
 $linkColor: $salmon;
 $linkColorHover: darken( $linkColor, 20% );
+
+$navColor: $greyLight;
+$navColorEnabled: $greyMedium;
+
 
 // Text selection
 $selectionBackgroundColor: #FF5E99;
@@ -88,11 +95,18 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 	box-shadow: none !important;
 }
 
-
 .reveal {
 
 	@import "../../../node_modules/font-awesome/scss/font-awesome.scss";
 
+	.handwriting {
+		font-family: 'Waiting for the Sunrise';
+		letter-spacing: 0;
+		color: fade-out( $mainColor, .75 );
+		-webkit-transform:rotate(-7deg);
+		        transform:rotate(-7deg);
+		position: absolute;
+	}
 
 	letter-spacing: 0;
 	line-height: 1 !important;
@@ -117,6 +131,13 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
  		width: $fa-li-width;
 	  text-align: center;
 	  opacity: 0.5;
+	}
+
+	ul.folders li::before {
+		content: "\f07b";
+	}
+	ul.folders li.file::before {
+		content: "\f15c";
 	}
 
 	section img.inline {
@@ -151,8 +172,12 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 		border-bottom: 2px solid fade-out( $linkColor, .5 );
 	}
 
-	.bg-salmon {
+	.bg-inverse {
 		color: $greyLight;
+
+		.handwriting {
+			color: fade-out( $greyLight, .4 );
+		}
 
 		h1,h2,h3,h4,h5,h6,
 		a {
@@ -177,12 +202,16 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 		padding: 1em;
 	}
 
-	h1 {
+	h1:not(.no-border) {
 		border-bottom: 2px solid;
 	}
 
-	h2 {
+	h2:not(.no-border) {
 		border-bottom: 1px solid $greyLight;
+	}
+
+	.fragment.visible:not(.current-fragment) .crossout {
+		text-decoration: line-through;
 	}
 
 }
