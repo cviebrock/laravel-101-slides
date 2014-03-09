@@ -9,7 +9,7 @@ html * {
   color-profile: sRGB;
   rendering-intent: auto; }
 
-.steel {
+.mauve {
   background-color: #706da7; }
 
 /*********************************************
@@ -1077,7 +1077,8 @@ body {
     content: "\f196"; }
   .reveal .handwriting {
     font-family: 'Loved by the King';
-    letter-spacing: 0;
+    letter-spacing: .03em;
+    word-spacing: -.3em;
     color: rgba(51, 51, 51, 0.5);
     -webkit-backface-visibility: hidden;
     -webkit-transform: rotate(-7deg);
@@ -1086,6 +1087,8 @@ body {
     position: absolute; }
   .reveal .handwriting.pen {
     color: #445577; }
+  .reveal .handwriting.padded {
+    padding-left: 0.5em; }
   .reveal ul {
     margin-left: 2.14286em; }
   .reveal ul li {
@@ -1128,8 +1131,10 @@ body {
     font-size: .65em;
     display: block;
     letter-spacing: 0; }
+  .reveal a:not(.image) {
+    border-bottom: 3px solid transparent; }
   .reveal a:not(.image):hover {
-    border-bottom: 2px solid rgba(244, 114, 109, 0.5); }
+    border-bottom: 3px solid rgba(244, 114, 109, 0.5); }
   .reveal .bg-inverse {
     color: whitesmoke; }
     .reveal .bg-inverse .handwriting {
@@ -1140,19 +1145,20 @@ body {
     .reveal .bg-inverse a:not(.image):hover {
       color: white;
       border-bottom-color: rgba(255, 255, 255, 0.5); }
+  .reveal h2 i.fa {
+    opacity: 0.4; }
   .reveal pre, .reveal code {
     font-family: "The Sans Mono Condensed", "Ubuntu Mono", monospace; }
   .reveal pre {
     font-size: .75em; }
   .reveal pre code {
+    background-color: rgba(0, 0, 0, 0.75);
     margin-bottom: 1em;
     padding: 1em; }
   .reveal h1:not(.no-border) {
     border-bottom: 2px solid; }
   .reveal h2:not(.no-border) {
     border-bottom: 1px solid whitesmoke; }
-  .reveal .fragment.visible:not(.current-fragment) .crossout {
-    text-decoration: line-through; }
   .reveal .bookcover {
     position: absolute;
     right: 0;
@@ -1191,3 +1197,7 @@ body {
   -ms-transform: rotateZ(7deg) scale(1);
   -o-transform: rotateZ(7deg) scale(1);
   transform: rotateZ(7deg) scale(1); }
+.reveal .slides section .fragment.highlight-active.visible {
+  color: rgba(51, 51, 51, 0.3); }
+.reveal .slides section .fragment.highlight-active.visible.current-fragment {
+  color: #1b91ff; }
