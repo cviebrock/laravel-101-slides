@@ -1201,3 +1201,6 @@ body {
   color: rgba(51, 51, 51, 0.3); }
 .reveal .slides section .fragment.highlight-active.visible.current-fragment {
   color: #1b91ff; }
+
+pre .comment {
+  font-style: italic; }
