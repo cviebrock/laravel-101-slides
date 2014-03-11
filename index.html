@@ -105,39 +105,40 @@
 
         <section>
           <h2>Starting a New Project</h2>
-          <div class="fragment">
-            <h3>Easiest</h3>
-            <pre><code data-trim class="bash">
+          <div class="fragment-block">
+            <div class="fragment hide-after">
+              <h3>Easiest</h3>
+              <pre><code data-trim class="bash">
 composer create-project laravel/laravel my-project --prefer-dist
-            </code></pre>
-          </div>
+              </code></pre>
+            </div>
 
-          <div class="fragment">
-            <h3>Somewhat Easy</h3>
-            <pre><code data-trim class="bash">
+            <div class="fragment hide-after">
+              <h3>Somewhat Easy</h3>
+              <pre><code data-trim class="bash">
 git clone git@github.com:laravel/laravel.git my-project
 cd my-project
 composer install
-            </code></pre>
-          </div>
+              </code></pre>
+            </div>
 
-          <div class="fragment">
-            <h3>Hrm...</h3>
-            <pre><code data-trim class="bash">
+            <div class="fragment">
+              <h3>Hrm...</h3>
+              <pre><code data-trim class="bash">
 curl -L -O https://github.com/laravel/laravel/archive/master.zip
 unzip master.zip
 mv laravel-master my-project
 cd my-project
 composer install
-            </code></pre>
+              </code></pre>
+            </div>
           </div>
-
         </section>
 
 
         <section data-background="#706da7" class="bg-inverse">
-          <h2 class="no-border"><i class="fa fa-exclamation-triangle fa-lg fa-fw"></i> Git it under (version) control</h2>
-          <div class="handwriting fragment" style="left: 6em; top: -1em;">
+          <h2 class="no-border"><i class="fa fa-exclamation-triangle fa-lg fa-fw"></i> Git it under control</h2>
+          <div class="handwriting fragment" style="left: 10em; top: 4em;">
             I see what you did.
           </div>
         </section>
@@ -193,12 +194,10 @@ composer install
         </section>
 
         <section>
-          <h2>Hello World</h2>
-            <pre><code data-trim class="php">
-# /app/routes.php
-
-Route::get('/', function()
-{
+          <h2>Basic Routing</h2>
+            <pre>
+            <code data-trim class="php" data-filename="app/routes.php">
+Route::get('/', function() {
   echo 'Hello World!';
 });
             </code></pre>
@@ -212,18 +211,144 @@ Route::get('/', function()
         </section>
 
 
+        <section>
+          <h2>Route Parameters</h2>
+          <div class="fragment-block">
+            <pre class="fragment">
+              <code data-trim class="php" data-filename="app/routes.php">
+// pass parameters via URI
 
+Route::get('/hello/{name}', function($name)
+{
+  return 'Hello, ' . $name;
+});
+              </code>
+            </pre>
+            <pre class="fragment">
+              <code data-trim class="php" data-filename="app/routes.php">
+// escape output for safety
+
+Route::get('/hello/{name}', function($name)
+{
+  return 'Hello, ' . e($name);
+});
+             </code>
+            </pre>
+            <pre class="fragment">
+              <code data-trim class="php" data-filename="app/routes.php">
+// filter the URI data
+
+Route::get('/hello/{name}', function($name)
+{
+  return 'Hello, ' . e($name);
+})->where('name','[A-za-z]+');
+              </code>
+            </pre>
+            <pre class="fragment">
+              <code data-trim class="php" data-filename="app/routes.php">
+// make the param optional
+
+Route::get('/hello/{name?}', function($name='stranger')
+{
+  return 'Hello, ' . e($name);
+})->where('name','[A-za-z]+');
+              </code>
+            </pre>
+          </div>
+				</section>
 
 
         <section>
-          <h2>Marvelous Unordered List</h2>
-          <ul>
-            <li>No order here</li>
-            <li>Or here</li>
-            <li>Or here</li>
-            <li>Or here</li>
-          </ul>
+          <h2>Controller Routing</h2>
+          <pre>
+            <code data-trim class="php" data-filename="app/routes.php">
+Route::get('hello/{name?}', 'HelloController@showWelcome');
+            </code>
+          </pre>
+          <pre>
+            <code data-trim class="php" data-filename="app/controllers/HelloController.php">
+class HelloController extends BaseController {
+
+  public function showWelcome($name='stranger')
+  {
+    return 'Hello, '. e($name) . '!';
+  }
+
+}
+            </code>
+          </pre>
         </section>
+
+        <section>
+          <h2>RESTful Controllers</h2>
+          <pre>
+            <code data-trim class="php" data-filename="app/routes.php">
+Route::get('users', 'UsersController');
+            </code>
+          </pre>
+          <pre>
+            <code data-trim class="php" data-filename="app/controllers/UsersController.php">
+class UsersController extends BaseController {
+
+  public function getIndex() {
+      // GET http://domain.com/users
+  }
+
+  public function postProfile() {
+      // POST http://domain.com/users/profile
+  }
+
+}
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h2>Passing Data to Views</h2>
+          <div class="fragment-block">
+            <pre class="fragment">
+             <code data-trim class="php" data-filename="app/routes.php">
+Route::get('/hello/{name}', function($name) {
+  return View::make('hello', array('name'=>$name) );
+});
+              </code>
+            </pre>
+            <pre class="fragment">
+             <code data-trim class="php" data-filename="app/routes.php">
+Route::get('/hello/{name}', function($name) {
+  return View::make('hello', compact('name') );
+});
+              </code>
+            </pre>
+          </div>
+          <div class="fragment-block">
+          <pre class="fragment">
+            <code data-trim class="html" data-filename="app/views/hello.php">
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;p&gt;Hello, &lt;?php echo e($name); ?&gt;!&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+            </code>
+          </pre>
+          <pre class="fragment">
+            <code data-trim class="html" data-filename="app/views/hello.blade.php">
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;p&gt;Hello, {{{ $name }}}!&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+            </code>
+          </pre>
+          </div>
+        </section>
+
+        <section>
+          <h2>Blade</h2>
+        </section>
+
+
+
 
         <section>
           <h2>Fantastic Ordered List</h2>
@@ -483,7 +608,7 @@ function linkify( selector ) {
           { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
           { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/highlight/highlight.pack.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
           { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
           { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
