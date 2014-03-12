@@ -38,256 +38,274 @@
 			<div class="slides">
 
 
-				<section data-background="#f4726d" class="bg-inverse">
-					<h1>Laravel 101</h1>
-					<p>
-						Winnipeg PHP Meetup - March XX, 2014
-					</p>
-				</section>
+<section data-background="#f4726d" class="bg-inverse">
+	<h1>Laravel 101</h1>
+	<p>
+		Winnipeg PHP Meetup - March XX, 2014
+	</p>
+</section>
 
 
+<section>
+	<h2>Colin Viebrock</h2>
+	<ul>
+		<li class="fragment roll-in">Freelance Web Developer/Designer
+			<em class="aside">front and back-end</em>
+		</li>
+		<li class="fragment roll-in">Involved in PHP since 1997
+			<em class="aside">with a few years off for good behaviour</em>
+		</li>
+		<li class="fragment roll-in">Previous founder of
+			<a href="//greengarage.ca">Green Garage</a>,
+			<a href="//prestoh.com/">Prestoh</a> &amp;
+			<a href="//easydns.com/">easyDNS</a>
+		</li>
+		<li class="fragment roll-in"><img src="/img/opensource.svg" class="inline no-shadow" height="184">
+			<img src="/img/php.svg" class="inline no-shadow" height="184">
+			<img src="/img/logos.png" class="inline no-shadow" height="184" width="376">
+		</li>
+		<li class="fragment roll-in">@cviebrock at
+			<a href="//github.com/cviebrock"> Github</a> and
+			<a href="//twitter.com/cviebrock"> Twitter</a>
+			<span class="handwriting fragment">&hellip; also on <a href="//ca.linkedin.com/in/colinviebrock/"> LinkedIn</a></span>
+		</li>
+	</ul>
+</section>
 
-				<section>
-					<h2>Colin Viebrock</h2>
-					<ul>
-						<li class="fragment roll-in">Freelance Web Developer/Designer
-							<em class="aside">front and back-end</em>
-						</li>
-						<li class="fragment roll-in">Involved in PHP since 1997
-							<em class="aside">with a few years off for good behaviour</em>
-						</li>
-						<li class="fragment roll-in">Previous founder of
-							<a href="//greengarage.ca">Green Garage</a>,
-							<a href="//prestoh.com/">Prestoh</a> &amp;
-							<a href="//easydns.com/">easyDNS</a>
-						</li>
-						<li class="fragment roll-in"><img src="/img/opensource.svg" class="inline no-shadow" height="184">
-							<img src="/img/php.svg" class="inline no-shadow" height="184">
-							<img src="/img/logos.png" class="inline no-shadow" height="184" width="376">
-						</li>
-						<li class="fragment roll-in">@cviebrock at
-							<a href="//github.com/cviebrock"> Github</a> and
-							<a href="//twitter.com/cviebrock"> Twitter</a>
-							<span class="handwriting fragment">&hellip; also on <a href="//ca.linkedin.com/in/colinviebrock/"> LinkedIn</a></span>
-						</li>
-					</ul>
-				</section>
+
+<section data-background="#f4726d" class="bg-inverse">
+	<h1>Laravel</h1>
+	<p class="fragment">
+		A free, open source, MVC web-application framework.
+	</p>
+	<p class="fragment">
+		<a href="//getcomposer.org"><i class="fa fa-fw fa-cloud-download"></i> laravel.com</a>
+	</p>
+</section>
 
 
-				<section data-background="#f4726d" class="bg-inverse">
-					<h1>Laravel</h1>
-					<p class="fragment">
-						A free, open source, MVC web-application framework.
-					</p>
-					<p class="fragment">
-						<a href="//getcomposer.org"><i class="fa fa-fw fa-cloud-download"></i> laravel.com</a>
-					</p>
-				</section>
+<section>
+	<h2>Prerequisites</h2>
+	<ul>
+		<li class="fragment roll-in">PHP 5.4.x
+			<em class="aside">was 5.3.7, but get with the times, folks!</em>
+		</li>
+		<li class="fragment roll-in">Mcrypt extension
+		</li>
+		<li class="fragment roll-in">JSON extension
+			<em class="aside">Not included by default in some PHP 5.5 distributions</em>
+		</li>
+		<li class="fragment roll-in">Composer
+			<em class="aside">
+				<a href="//getcomposer.org"><i class="fa fa-cloud-download"></i> getcomposer.org</a>
+				and install it globally!
+			</em>
+		</li>
+</section>
 
-				<section>
-					<h2>Prerequisites</h2>
-					<ul>
-						<li class="fragment roll-in">PHP 5.4.x
-							<em class="aside">was 5.3.7, but get with the times, folks!</em>
-						</li>
-						<li class="fragment roll-in">Mcrypt extension
-						</li>
-						<li class="fragment roll-in">JSON extension
-							<em class="aside">Not included by default in some PHP 5.5 distributions</em>
-						</li>
-						<li class="fragment roll-in">Composer
-							<em class="aside">
-								<a href="//getcomposer.org"><i class="fa fa-cloud-download"></i> getcomposer.org</a>
-								and install it globally!
-							</em>
-						</li>
-				</section>
 
-				<section>
-					<h2>Starting a New Project</h2>
-					<div class="fragment-block">
-						<div class="fragment hide-after">
-							<h3>Easiest</h3>
-							<pre><code data-trim class="bash">
+<section>
+	<h2>Starting a New Project</h2>
+	<div class="fragment-block">
+		<div class="fragment hide-after">
+			<h3>Easiest</h3>
+			<pre>
+<code data-trim class="bash">
 composer create-project laravel/laravel my-project --prefer-dist
-							</code></pre>
-						</div>
+</code>
+			</pre>
+		</div>
 
-						<div class="fragment hide-after">
-							<h3>Somewhat Easy</h3>
-							<pre><code data-trim class="bash">
+		<div
+		 class="fragment hide-after">
+			<h3>Somewhat Easy</h3>
+			<pre>
+<code data-trim class="bash">
 git clone git@github.com:laravel/laravel.git my-project
 cd my-project
 composer install
-							</code></pre>
-						</div>
+			</code
+			></pre>
+		</div>
 
-						<div class="fragment">
-							<h3>Hrm...</h3>
-							<pre><code data-trim class="bash">
+		<div class="fragment">
+			<h3>Hrm...</h3>
+			<pre>
+<code data-trim class="bash">
 curl -L -O https://github.com/laravel/laravel/archive/master.zip
 unzip master.zip
 mv laravel-master my-project
 cd my-project
-composer install
-							</code></pre>
-						</div>
-					</div>
-				</section>
+co
+mposer install
+</code>
+			</pre>
+		</div>
+	</div>
+</section>
 
 
-				<section data-background="#706da7" class="bg-inverse">
-					<h2 class="no-border"><i class="fa fa-exclamation-triangle fa-lg fa-fw"></i> Git it under control</h2>
-					<div class="handwriting fragment" style="left: 10em; top: 4em;">
-						I see what you did.
-					</div>
-				</section>
+<section data-background="#706da7" class="bg-inverse">
+	<h2 class="no-border"><i class="fa fa-exclamation-triangle fa-lg fa-fw"></i> Git it under control</h2>
+	<div class="handwriting fragment" style="left: 10em; top: 4em;">
+		I see what you did.
+	</div>
+</section>
 
-				<section>
-					<h2>Project Structure</h2>
-					<ul class="folders">
-						<li>app
-							<span class="handwriting fragment inline padded highlight-active">&lt; your stuff</span>
-						</li>
-						<li>bootstrap
-							<span class="handwriting fragment inline padded highlight-active">&lt;  startup stuff</span>
-						</li>
-						<li>public
-							<span class="handwriting fragment inline padded highlight-active">&lt; static stuff: img, js, css, etc.</span>
-						</li>
-						<li class="file">composer.json
-							<span class="handwriting fragment inline padded highlight-active">&lt; other people's stuff you want</span>
-						</li>
-						<li>vendor
-							<span class="handwriting fragment inline padded highlight-active">&lt; other people's stuff</span>
-						</li>
-					</ul>
-				</section>
 
-				<section>
-					<h2>Project Structure</h2>
-					<ul class="folders">
-						<li>app
-							<ul>
-								<li>commands</li>
-								<li>config</li>
-								<li class="fragment highlight-blue" data-fragment-index="1">controllers</li>
-								<li>database</li>
-								<li>lang</li>
-								<li class="fragment highlight-blue" data-fragment-index="1">models</li>
-								<li>start</li>
-								<li>storage</li>
-								<li>tests</li>
-								<li class="fragment highlight-blue" data-fragment-index="1">views</li>
-								<li class="file">filters.php</li>
-								<li class="file fragment highlight-blue" data-fragment-index="1">routes.php</li>
-							</ul>
-						</li>
-					</ul>
-				</section>
+<section>
+	<h2>Project Structure</h2>
+	<ul class="folders">
+		<li>app
+			<span class="handwriting fragment inline padded highlight-active">&lt; your stuff</span>
+		</li>
+		<li>bootstrap
+			<span class="handwriting fragment inline padded highlight-active">&lt;  startup stuff</span>
+		</li>
+		<li>public
+			<span class="handwriting fragment inline padded highlight-active">&lt; static stuff: img, js, css, etc.</span>
+		</li>
+		<li class="file">composer.json
+			<span class="handwriting fragment inline padded highlight-active">&lt; other people's stuff you want</span>
+		</li>
+		<li>vendor
+			<span class="handwriting fragment inline padded highlight-active">&lt; other people's stuff</span>
+		</li>
+	</ul>
+</section>
 
-				<section data-background="#46b87c" class="bg-inverse">
-					<h2 class="no-border"><i class="fa fa-wrench fa-lg fa-fw"></i> Our First App</h2>
-					<div class="fragment bookcover skewed spin-in">
-						<img src="/img/basicfun.jpg">
-					</div>
-				</section>
 
-				<section>
-					<h2>Basic Routing</h2>
-						<pre>
-						<code data-trim class="php" data-filename="app/routes.php">
+<section>
+	<h2>Project Structure</h2>
+	<ul class="folders">
+		<li>app
+			<ul>
+				<li>commands</li>
+				<li>config</li>
+				<li class="fragment highlight-blue" data-fragment-index="1">controllers</li>
+				<li>database</li>
+				<li>lang</li>
+				<li class="fragment highlight-blue" data-fragment-index="1">models</li>
+				<li>start</li>
+				<li>storage</li>
+				<li>tests</li>
+				<li class="fragment highlight-blue" data-fragment-index="1">views</li>
+				<li class="file">filters.php</li>
+				<li class="file fragment highlight-blue" data-fragment-index="1">routes.php</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+
+<section data-background="#46b87c" class="bg-inverse">
+	<h2 class="no-border"><i class="fa fa-wrench fa-lg fa-fw"></i> Our First App</h2>
+	<div class="fragment bookcover skewed spin-in">
+		<img src="/img/basicfun.jpg">
+	</div>
+</section>
+
+
+<section>
+	<h2>Basic Routing</h2>
+		<pre>
+<code data-trim class="php" data-filename="app/routes.php">
 Route::get('/', function() {
-	echo 'Hello World!';
+echo 'Hello World!';
 });
-						</code></pre>
-				</section>
+</code>
+		</pre>
+</section>
 
-				<section data-background="#706da7" class="bg-inverse">
-					<h2 class="no-border"><i class="fa fa-thumbs-up fa-lg fa-fw"></i>  Built-in Server</h2>
-						<pre><code data-trim class="bash">
+
+<section data-background="#706da7" class="bg-inverse">
+	<h2 class="no-border"><i class="fa fa-thumbs-up fa-lg fa-fw"></i>  Built-in Server</h2>
+		<pre>
+<code data-trim class="bash">
 ./artisan serve --port 8000
-						</code></pre>
-				</section>
+</code>
+		</pre>
+</section>
 
 
-				<section>
-					<h2>Route Parameters</h2>
-					<div class="fragment-block">
-						<pre class="fragment">
-							<code data-trim class="php" data-filename="app/routes.php">
+<section>
+	<h2>Route Parameters</h2>
+	<div class="fragment-block">
+		<pre class="fragment">
+<code data-trim class="php" data-filename="app/routes.php">
 // pass parameters via URI
 
 Route::get('/hello/{name}', function($name)
 {
 	return 'Hello, ' . $name;
 });
-							</code>
-						</pre>
-						<pre class="fragment">
-							<code data-trim class="php" data-filename="app/routes.php">
+</code>
+		</pre>
+		<pre class="fragment">
+<code data-trim class="php" data-filename="app/routes.php">
 // escape output for safety
 
 Route::get('/hello/{name}', function($name)
 {
 	return 'Hello, ' . e($name);
 });
-						 </code>
-						</pre>
-						<pre class="fragment">
-							<code data-trim class="php" data-filename="app/routes.php">
+</code>
+		</pre>
+		<pre class="fragment">
+<code data-trim class="php" data-filename="app/routes.php">
 // filter the URI data
 
 Route::get('/hello/{name}', function($name)
 {
 	return 'Hello, ' . e($name);
 })->where('name','[A-za-z]+');
-							</code>
-						</pre>
-						<pre class="fragment">
-							<code data-trim class="php" data-filename="app/routes.php">
+</code>
+		</pre>
+		<pre class="fragment">
+<code data-trim class="php" data-filename="app/routes.php">
 // make the param optional
 
 Route::get('/hello/{name?}', function($name='stranger')
 {
 	return 'Hello, ' . e($name);
 })->where('name','[A-za-z]+');
-							</code>
-						</pre>
-					</div>
-				</section>
+</code>
+		</pre>
+	</div>
+</section>
 
 
-				<section>
-					<h2>Controller Routing</h2>
-					<pre>
-						<code data-trim class="php" data-filename="app/routes.php">
+<section>
+	<h2>Controller Routing</h2>
+	<pre>
+<code data-trim class="php" data-filename="app/routes.php">
 Route::get('hello/{name?}', 'HelloController@showWelcome');
-						</code>
-					</pre>
-					<pre>
-						<code data-trim class="php" data-filename="app/controllers/HelloController.php">
+</code>
+	</pre>
+	<pre>
+<code data-trim class="php" data-filename="app/controllers/HelloController.php">
 class HelloController extends BaseController {
 
-	public function showWelcome($name='stranger')
-	{
-		return 'Hello, '. e($name) . '!';
-	}
+public function showWelcome($name='stranger')
+{
+	return 'Hello, '. e($name) . '!';
+}
 
 }
-            </code>
-          </pre>
-        </section>
+</code>
+	</pre>
+</section>
 
-        <section>
-          <h2>RESTful Controllers</h2>
-          <pre>
-            <code data-trim class="php" data-filename="app/routes.php">
+
+<section>
+	<h2>RESTful Controllers</h2>
+	<pre>
+<code data-trim class="php" data-filename="app/routes.php">
 Route::controller('users', 'UsersController');
-            </code>
-          </pre>
-          <pre>
-            <code data-trim class="php" data-filename="app/controllers/UsersController.php">
+</code>
+	</pre>
+	<pre>
+<code data-trim class="php" data-filename="app/controllers/UsersController.php">
 class UsersController extends BaseController {
 
 	public function getIndex() {
@@ -299,73 +317,72 @@ class UsersController extends BaseController {
 	}
 
 }
-						</code>
-					</pre>
-				</section>
+</code>
+	</pre>
+</section>
 
-				<section>
-					<h2>Passing Data to Views</h2>
-					<div class="fragment-block">
-						<pre class="fragment">
-						 <code data-trim class="php" data-filename="app/routes.php">
+
+<section>
+	<h2>Passing Data to Views</h2>
+	<div class="fragment-block">
+		<pre class="fragment">
+<code data-trim class="php" data-filename="app/routes.php">
 Route::get('/hello/{name}', function($name) {
 	return View::make('hello', array('name'=>$name) );
 });
-							</code>
-						</pre>
-						<pre class="fragment">
-						 <code data-trim class="php" data-filename="app/routes.php">
+</code>
+		</pre>
+		<pre class="fragment">
+<code data-trim class="php" data-filename="app/routes.php">
 Route::get('/hello/{name}', function($name) {
 	return View::make('hello', compact('name') );
 });
-							</code>
-						</pre>
-					</div>
-					<div class="fragment-block">
-					<pre class="fragment">
-						<code data-trim class="html" data-filename="app/views/hello.php">
+			</code>
+		</pre>
+	</div>
+	<div class="fragment-block">
+		<pre class="fragment">
+<code data-trim class="html" data-filename="app/views/hello.php">
 &lt;html&gt;
 	&lt;body&gt;
 		&lt;p&gt;Hello, &lt;?php echo e($name); ?&gt;!&lt;/p&gt;
 	&lt;/body&gt;
 &lt;/html&gt;
-						</code>
-					</pre>
-					<pre class="fragment">
-						<code data-trim class="html" data-filename="app/views/hello.blade.php">
+</code>
+		</pre>
+		<pre class="fragment">
+<code data-trim class="html" data-filename="app/views/hello.blade.php">
 &lt;html&gt;
 	&lt;body&gt;
 		&lt;p&gt;Hello, {{{ $name }}}!&lt;/p&gt;
 	&lt;/body&gt;
 &lt;/html&gt;
-						</code>
-					</pre>
-					</div>
-				</section>
+</code>
+		</pre>
+	</div>
+</section>
 
 
-				<section class="stack">
+<section class="stack">
 
-				<section>
-					<h2>Blade Templates</h2>
-					<pre>
-					 <code data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
+	<section>
+		<h2>Blade Templates</h2>
+		<pre>
+<code data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
 &lt;html&gt;
 	&lt;body&gt;
-
 		// echo and escape output
 		Hello {{ $name }}!  Hello {{{ $html }}}!
-
 	&lt;/body&gt;
 &lt;/html&gt;
-					 </code>
-				 </pre>
-				</section>
+</code>
+	 </pre>
+	</section>
 
-				<section>
-					<h2>If Statements</h2>
-					<pre>
-					 <code data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
+	<section>
+		<h2>If Statements</h2>
+		<pre>
+<code data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
 @if( $name=='Bob' )
 	Good to see you, Bob!
 @elseif( $name=='Mary' )
@@ -377,14 +394,14 @@ Route::get('/hello/{name}', function($name) {
 @unless ($signed_in)
 	You are not signed in.
 @endunless
-					 </code>
-				 </pre>
-				</section>
+</code>
+	 </pre>
+	</section>
 
-				<section>
-					<h2>Loops</h2>
-					<pre>
-					 <code data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
+	<section>
+		<h2>Loops</h2>
+		<pre>
+<code data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
 @for ($i = 0; $i < 10; $i++)
 	The current value is {{ $i }}
 @endfor
@@ -396,14 +413,14 @@ Route::get('/hello/{name}', function($name) {
 @while (true)
 	<p>Make it stop!</p>
 @endwhile
-					 </code>
-				 </pre>
-				</section>
+</code>
+		</pre>
+	</section>
 
-				<section>
-					<h2>Layouts</h2>
-					<pre>
-						<code data-trim class="html" data-filename="app/views/layouts/master.blade.php">
+	<section>
+		<h2>Layouts</h2>
+		<pre>
+<code data-trim class="html" data-filename="app/views/layouts/master.blade.php">
 &lt;html&gt;
 	&lt;body&gt;
 		@include('header')  {{- app/views/header.blade.php -}}
@@ -417,10 +434,10 @@ Route::get('/hello/{name}', function($name) {
 		&lt;/div&gt;
 	&lt;/body&gt;
 &lt;/html&gt;
-						</code>
-					</pre>
-					<pre>
-						<code data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
+</code>
+		</pre>
+		<pre>
+<code data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
 @extends('layouts.master')
 
 @section('sidebar')
@@ -431,43 +448,45 @@ Route::get('/hello/{name}', function($name) {
 @section('content')
 	<p>This is my body content.</p>
 @stop
-						</code>
-					</pre>
-				</section>
+</code>
+		</pre>
+	</section>
 
-				</section>
+</section>
 
 
+<section data-background="#706da7" class="bg-inverse">
+	<h2 class="no-border"><i class="fa fa-archive fa-lg fa-fw"></i> Models &amp; Database</h2>
+	<p>
+		Out-of-the-box support for:
+	</p>
+	<ul>
+		<li>MySQL</li>
+		<li>Postgres</li>
+		<li>SQLite</li>
+		<li>SQL Server</li>
+	</ul>
+</section>
 
-				<section data-background="#706da7" class="bg-inverse">
-					<h2 class="no-border"><i class="fa fa-archive fa-lg fa-fw"></i> Models &amp; Database</h2>
-					<p>
-						Out-of-the-box support for:
-					</p>
-					<ul>
-						<li>MySQL</li>
-						<li>Postgres</li>
-						<li>SQLite</li>
-						<li>SQL Server</li>
-					</ul>
-				</section>
 
 <section class="stack">
-				<section>
-					<h2>Secret Environment Variables</h2>
-					<pre>
-						<code data-trim class="php" data-filename=".env.php">
+
+	<section>
+		<h2>Secret Environment Variables</h2>
+		<pre>
+<code data-trim class="php" data-filename=".env.php">
 return array(
-    'MYSQL_USER' => 'dbuser',
-    'MYSQL_PASS' => 'super-secret-sauce',
+		'MYSQL_USER' => 'dbuser',
+		'MYSQL_PASS' => 'super-secret-sauce',
 );
-						</code>
-					</pre>
-				</section>
-				<section>
-					<h2>Configuration</h2>
-					<pre>
-						<code data-trim class="php" data-filename="app/config/database.php">
+</code>
+		</pre>
+	</section>
+
+	<section>
+		<h2>Configuration</h2>
+		<pre>
+<code data-trim class="php" data-filename="app/config/database.php">
 return array(
 
 	'default' => 'mysql',
@@ -490,25 +509,29 @@ return array(
 		),
 
 		...
-						</code>
-					</pre>
-				</section>
+</code>
+		</pre>
+	</section>
+
 </section>
+
 
 <section class="stack">
 
-				<section>
-					<h2>Migrations</h2>
-					<pre>
-						<code data-trim class="bash">
-./artisan migrate:make create_posts_table
-						</code>
-					</pre>
-				</section>
+	<section>
+		<h2>Migrations</h2>
+		<pre>
+<code data-trim class="bash">
+./artisan migrate:install
 
-				<section>
-					<pre>
-						<code data-trim class="php" data-filename="app/database/migrations/2014_03_12_123456_create_posts_table.blade.php">
+./artisan migrate:make create_posts_table
+</code>
+		</pre>
+	</section>
+
+	<section>
+		<pre>
+<code data-trim class="php" data-filename="app/database/migrations/2014_03_12_123456_create_posts_table.blade.php">
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -535,10 +558,35 @@ class CreatePostsTable extends Migration {
 	}
 
 }
-						</code>
-					</pre>
-				</section>
+</code>
+		</pre>
+	</section>
+
+	<section>
+		<pre>
+<code data-trim class="php">
+public function up()
+{
+	Schema::create('posts', function(Blueprint $table) {
+		$table->increments('id');
+		$table->string('title');
+		$table->text('text')->nullable();
+		$table->boolean('active')->default(true);
+		$table->timestamps();
+	});
+}
+</code>
+<code data-trim class="php">
+public function down()
+{
+	Schema::drop('posts');
+}
+</code>
+		</pre>
+	</section>
+
 </section>
+
 
 				<section id="transitions">
 					<h2>Transition Styles</h2>
@@ -575,7 +623,8 @@ class CreatePostsTable extends Migration {
 					</p>
 				</section>
 
-				<section>
+				<secti
+				on>
 					<h2>Global State</h2>
 					<p>
 						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
@@ -584,54 +633,69 @@ class CreatePostsTable extends Migration {
 					</p>
 				</section>
 
-				<section data-state="customevent">
+
+				<sect
+				ion data-state="customevent">
 					<h2>Custom Events</h2>
 					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
 					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
+					<pre>
+<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+Reveal.addEventListener(
+'customevent', function() {
 	console.log( '"customevent" has fired' );
 } );
-					</code></pre>
+</code>
+					<
+					/pre>
 				</section>
 
 				<section>
 					<section data-background="#007777">
 						<h2>Slide Backgrounds</h2>
 						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
+Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
 						</p>
 						<a href="#" class="image navigate-down">
 							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
 						</a>
+
 					</section>
 					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
 						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
+						<pre>
+<code>&lt;section data-background="image.png"&gt;</code>
+</pre>
 					</section>
 					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
 						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
+						<pre>
+<
+code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code>
+</pre>
 					</section>
 				</section>
 
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
+				<section
+				data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
 					<h2>Background Transitions</h2>
 					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
+Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
 					</p>
 				</section>
 
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
+				<section data-tra
+				nsition="linear" data-background="#8c4738" data-background-transition="slide">
 					<h2>Background Transition Override</h2>
 					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
+You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
 					</p>
 				</section>
 
 				<section>
-					<h2>Clever Quotes</h2>
+					<h
+					2>Clever Quotes</h2>
 					<p>
 						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
 						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
@@ -644,11 +708,13 @@ Reveal.addEventListener( 'customevent', function() {
 
 				<section>
 					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
+					<pre>
+<code data-trim contenteditable>
 function linkify( selector ) {
 	if( supports3DTransforms ) {
 
-		var nodes = document.querySelectorAll( selector );
+		var nodes =
+		document.querySelectorAll( selector );
 
 		for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
 			var node = nodes[i];
@@ -659,7 +725,8 @@ function linkify( selector ) {
 		}
 	}
 }
-					</code></pre>
+</code>
+					</pre>
 					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
 				</section>
 
@@ -677,12 +744,15 @@ function linkify( selector ) {
 						<p>Hit the next arrow...</p>
 						<p class="fragment">... to step through ...</p>
 						<ol>
-							<li class="fragment"><code>any type</code></li>
+							<li class="fragment">
+<code>any type</code>
+</li>
 							<li class="fragment"><em>of view</em></li>
 							<li class="fragment"><strong>fragments</strong></li>
 						</ol>
 
-						<aside class="notes">
+						<asi
+						de class="notes">
 							This slide has fragments which are also stepped through in the notes window.
 						</aside>
 					</section>
