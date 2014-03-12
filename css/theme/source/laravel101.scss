@@ -308,7 +308,8 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 		padding: 1em;
 		border-radius: 0.5em;
 		box-shadow: 0 0 6px rgba(0,0,0,.3);
-		max-height: 15em;
+		max-height: 20em;
+		line-height: 1.4;
 	}
 
 	pre .filename {
