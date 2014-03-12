@@ -1,10 +1,10 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700);
+@import url(//fonts.googleapis.com/css?family=Lato:300);
+@import url(//fonts.googleapis.com/css?family=Loved+by+the+King);
 /**
  * Solarized Light theme for reveal.js.
  * Author: Achim Staebler
  */
-@import url(//fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700);
-@import url(//fonts.googleapis.com/css?family=Lato:300);
-@import url(//fonts.googleapis.com/css?family=Loved+by+the+King);
 html * {
   color-profile: sRGB;
   rendering-intent: auto; }
@@ -1207,7 +1207,8 @@ body {
     background-color: #333333;
     padding: 1em;
     border-radius: 0.5em;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3); }
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    max-height: 15em; }
   .reveal pre .filename {
     color: #777777;
     background: #333333;

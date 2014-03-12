@@ -452,22 +452,93 @@ Route::get('/hello/{name}', function($name) {
 					</ul>
 				</section>
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-							## Markdown support
-
-							For those of you who like that sort of thing.
-							Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
+<section class="stack">
+				<section>
+					<h2>Secret Environment Variables</h2>
+					<pre>
+						<code data-trim class="php" data-filename=".env.php">
+return array(
+    'MYSQL_USER' => 'dbuser',
+    'MYSQL_PASS' => 'super-secret-sauce',
+);
+						</code>
+					</pre>
 				</section>
+				<section>
+					<h2>Configuration</h2>
+					<pre>
+						<code data-trim class="php" data-filename="app/config/database.php">
+return array(
+
+	'default' => 'mysql',
+
+	...
+
+	'connections' => array(
+
+		...
+
+		'mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'my-project',
+			'username'  => $_ENV['MYSQL_USER'],
+			'password'  => $_ENV['MYSQL_PASS'],
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
+
+		...
+						</code>
+					</pre>
+				</section>
+</section>
+
+<section class="stack">
+
+				<section>
+					<h2>Migrations</h2>
+					<pre>
+						<code data-trim class="bash">
+./artisan migrate:make create_posts_table
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<pre>
+						<code data-trim class="php" data-filename="app/database/migrations/2014_03_12_123456_create_posts_table.blade.php">
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreatePostsTable extends Migration {
+
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		//
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		//
+	}
+
+}
+						</code>
+					</pre>
+				</section>
+</section>
 
 				<section id="transitions">
 					<h2>Transition Styles</h2>

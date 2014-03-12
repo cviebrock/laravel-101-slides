@@ -19,9 +19,9 @@
 			// filename marker
 			if( element.hasAttribute( 'data-filename' ) ) {
 				var filename = element.getAttribute('data-filename');
-				element.innerHTML = '<span class="filename">' +
+				element.insertAdjacentHTML('beforebegin', '<span class="filename no-highlight">' +
 					'<i class="fa fa-file fa-fw"></i> ' + filename +
-					'</span>' + element.innerHTML;
+					'</span>');
 			}
 
 
