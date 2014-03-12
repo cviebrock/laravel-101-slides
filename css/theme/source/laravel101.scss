@@ -105,6 +105,9 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 	letter-spacing: 0;
 	line-height: 1 !important;
 
+	p {
+		margin-bottom: 0.5em;
+	}
 
 	.handwriting {
 		font-family: 'Loved by the King';
@@ -217,22 +220,6 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 		opacity: 0.4;
 	}
 
-	pre, code {
-		font-family: $monospaceFont;
-	}
-
-	pre {
-		font-size: .75em;
-		box-shadow: none;
-	}
-
-	pre code {
-		background-color: $greyDarker;
-		padding: 1em;
-		border-radius: 0.5em;
-		box-shadow: 0 0 6px rgba(0,0,0,.3);
-	}
-
 	h1:not(.no-border) {
 		border-bottom: 2px solid;
 	}
@@ -302,6 +289,26 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 		font-style: italic;
 	}
 
+	pre, code {
+		font-family: $monospaceFont;
+	}
+
+	pre {
+		font-size: .75em;
+		box-shadow: none;
+	}
+
+	pre+pre:not(.fragment) {
+		margin-top: -2em;
+	}
+
+	pre code {
+		background-color: $greyDarker;
+		padding: 1em;
+		border-radius: 0.5em;
+		box-shadow: 0 0 6px rgba(0,0,0,.3);
+	}
+
 	pre .filename {
 		color: $greyDark;
 		background: $greyDarker;
@@ -330,6 +337,10 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 			opacity: 0;
 		}
 
+	}
+
+	.fragment-block + .fragment-block {
+		margin-top: -2em;
 	}
 
 

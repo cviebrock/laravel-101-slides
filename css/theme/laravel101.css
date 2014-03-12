@@ -1075,6 +1075,8 @@ body {
     content: "\f195"; }
   .reveal .fa-plus-square-o:before {
     content: "\f196"; }
+  .reveal p {
+    margin-bottom: 0.5em; }
   .reveal .handwriting {
     font-family: 'Loved by the King';
     letter-spacing: .03em;
@@ -1147,16 +1149,6 @@ body {
       border-bottom-color: rgba(255, 255, 255, 0.5); }
   .reveal h2 i.fa {
     opacity: 0.4; }
-  .reveal pre, .reveal code {
-    font-family: "The Sans Mono Condensed", "Ubuntu Mono", monospace; }
-  .reveal pre {
-    font-size: .75em;
-    box-shadow: none; }
-  .reveal pre code {
-    background-color: #333333;
-    padding: 1em;
-    border-radius: 0.5em;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3); }
   .reveal h1:not(.no-border) {
     border-bottom: 2px solid; }
   .reveal h2:not(.no-border) {
@@ -1204,6 +1196,18 @@ body {
     color: #1b91ff; }
   .reveal .hljs-comment {
     font-style: italic; }
+  .reveal pre, .reveal code {
+    font-family: "The Sans Mono Condensed", "Ubuntu Mono", monospace; }
+  .reveal pre {
+    font-size: .75em;
+    box-shadow: none; }
+  .reveal pre + pre:not(.fragment) {
+    margin-top: -2em; }
+  .reveal pre code {
+    background-color: #333333;
+    padding: 1em;
+    border-radius: 0.5em;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3); }
   .reveal pre .filename {
     color: #777777;
     background: #333333;
@@ -1225,3 +1229,5 @@ body {
       right: 0; }
     .reveal .fragment-block .fragment.hide-after.visible:not(.current-fragment) {
       opacity: 0; }
+  .reveal .fragment-block + .fragment-block {
+    margin-top: -2em; }
