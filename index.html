@@ -275,19 +275,19 @@ class HelloController extends BaseController {
 	}
 
 }
-						</code>
-					</pre>
-				</section>
+            </code>
+          </pre>
+        </section>
 
-				<section>
-					<h2>RESTful Controllers</h2>
-					<pre>
-						<code data-trim class="php" data-filename="app/routes.php">
-Route::get('users', 'UsersController');
-						</code>
-					</pre>
-					<pre>
-						<code data-trim class="php" data-filename="app/controllers/UsersController.php">
+        <section>
+          <h2>RESTful Controllers</h2>
+          <pre>
+            <code data-trim class="php" data-filename="app/routes.php">
+Route::controller('users', 'UsersController');
+            </code>
+          </pre>
+          <pre>
+            <code data-trim class="php" data-filename="app/controllers/UsersController.php">
 class UsersController extends BaseController {
 
 	public function getIndex() {

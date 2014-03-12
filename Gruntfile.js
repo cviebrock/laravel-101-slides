@@ -38,6 +38,15 @@ module.exports = function(grunt) {
 			}
 		},
 
+		copy: {
+			main: {
+				// expand: true,
+				// cwd: 'node_modules/font-awesome/fonts/',
+				// src: '*',
+				// dest: 'fonts/'
+			}
+		},
+
 		sass: {
 			main: {
 				files: {
@@ -119,13 +128,14 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-contrib-sass' );
 	grunt.loadNpmTasks( 'grunt-contrib-connect' );
+	// grunt.loadNpmTasks( 'grunt-contrib-copy' );
 	grunt.loadNpmTasks( 'grunt-zip' );
 
 	// Default task
 	grunt.registerTask( 'default', [ 'jshint', 'cssmin', 'uglify', 'qunit' ] );
 
 	// Theme task
-	grunt.registerTask( 'themes', [ 'sass' ] );
+	grunt.registerTask( 'themes', [ 'copy','sass' ] );
 
 	// Package presentation to archive
 	grunt.registerTask( 'package', [ 'default', 'zip' ] );
