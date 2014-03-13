@@ -318,6 +318,9 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 
 	pre+pre:not(.fragment) {
 		margin-top: -1em;
+    code {
+      max-height: 12em;
+    }
 	}
 
 	pre code {
@@ -326,7 +329,7 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 		border-radius: 0.5em;
 		box-shadow: 0 0 6px rgba(0,0,0,.3);
 		max-height: 20em;
-		line-height: 1.4;
+		line-height: 1.2;
 	}
 
 	pre .filename {
@@ -338,7 +341,7 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 		right: 1em;
 		top: -1.5em;
 		letter-spacing: -.05em;
-		font-size: 70%;
+		font-size: 65%;
 		font-style: italic;
 	}
 

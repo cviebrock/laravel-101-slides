@@ -110,7 +110,7 @@
 		<div class="fragment hide-after">
 			<h3>Easiest</h3>
 			<pre>
-<code data-trim class="bash">
+<code contenteditable data-trim class="bash">
 composer create-project laravel/laravel my-project --prefer-dist
 </code>
 			</pre>
@@ -119,7 +119,7 @@ composer create-project laravel/laravel my-project --prefer-dist
 		<div class="fragment hide-after">
 			<h3>Somewhat Easy</h3>
 			<pre>
-<code data-trim class="bash">
+<code contenteditable data-trim class="bash">
 git clone git@github.com:laravel/laravel.git my-project
 cd my-project
 composer install
@@ -130,7 +130,7 @@ composer install
 		<div class="fragment">
 			<h3>Hrm...</h3>
 			<pre>
-<code data-trim class="bash">
+<code contenteditable data-trim class="bash">
 curl -L -O https://github.com/laravel/laravel/archive/master.zip
 unzip master.zip
 mv laravel-master my-project
@@ -212,7 +212,7 @@ composer install
 <section>
 	<h2>Basic Routing</h2>
 		<pre>
-<code data-trim class="php" data-filename="app/routes.php">
+<code contenteditable data-trim class="php" data-filename="app/routes.php">
 Route::get('/', function() {
 echo 'Hello World!';
 });
@@ -224,7 +224,7 @@ echo 'Hello World!';
 <section data-background="#706da7" class="bg-inverse">
 	<h2 class="no-border"><i class="fa fa-thumbs-up fa-lg fa-fw"></i>  Built-in Server</h2>
 		<pre>
-<code data-trim class="bash">
+<code contenteditable data-trim class="bash">
 ./artisan serve --port 8000
 </code>
 		</pre>
@@ -235,7 +235,7 @@ echo 'Hello World!';
 	<h2>Route Parameters</h2>
 	<div class="fragment-block">
 		<pre class="fragment">
-<code data-trim class="php" data-filename="app/routes.php">
+<code contenteditable data-trim class="php" data-filename="app/routes.php">
 // pass parameters via URI
 
 Route::get('/hello/{name}', function($name)
@@ -245,7 +245,7 @@ Route::get('/hello/{name}', function($name)
 </code>
 		</pre>
 		<pre class="fragment">
-<code data-trim class="php" data-filename="app/routes.php">
+<code contenteditable data-trim class="php" data-filename="app/routes.php">
 // escape output for safety
 
 Route::get('/hello/{name}', function($name)
@@ -255,7 +255,7 @@ Route::get('/hello/{name}', function($name)
 </code>
 		</pre>
 		<pre class="fragment">
-<code data-trim class="php" data-filename="app/routes.php">
+<code contenteditable data-trim class="php" data-filename="app/routes.php">
 // filter the URI data
 
 Route::get('/hello/{name}', function($name)
@@ -265,7 +265,7 @@ Route::get('/hello/{name}', function($name)
 </code>
 		</pre>
 		<pre class="fragment">
-<code data-trim class="php" data-filename="app/routes.php">
+<code contenteditable data-trim class="php" data-filename="app/routes.php">
 // make the param optional
 
 Route::get('/hello/{name?}', function($name='stranger')
@@ -281,12 +281,12 @@ Route::get('/hello/{name?}', function($name='stranger')
 <section>
 	<h2>Controller Routing</h2>
 	<pre>
-<code data-trim class="php" data-filename="app/routes.php">
+<code contenteditable data-trim class="php" data-filename="app/routes.php">
 Route::get('hello/{name?}', 'HelloController@showWelcome');
 </code>
 	</pre>
 	<pre>
-<code data-trim class="php" data-filename="app/controllers/HelloController.php">
+<code contenteditable data-trim class="php" data-filename="app/controllers/HelloController.php">
 class HelloController extends BaseController {
 
 	public function showWelcome($name='stranger')
@@ -303,12 +303,12 @@ class HelloController extends BaseController {
 <section>
 	<h2>RESTful Controllers</h2>
 	<pre>
-<code data-trim class="php" data-filename="app/routes.php">
+<code contenteditable data-trim class="php" data-filename="app/routes.php">
 Route::controller('users', 'UsersController');
 </code>
 	</pre>
 	<pre>
-<code data-trim class="php" data-filename="app/controllers/UsersController.php">
+<code contenteditable data-trim class="php" data-filename="app/controllers/UsersController.php">
 class UsersController extends BaseController {
 
 	public function getIndex() {
@@ -329,14 +329,14 @@ class UsersController extends BaseController {
 	<h2>Passing Data to Views</h2>
 	<div class="fragment-block">
 		<pre class="fragment">
-<code data-trim class="php" data-filename="app/routes.php">
+<code contenteditable data-trim class="php" data-filename="app/routes.php">
 Route::get('/hello/{name}', function($name) {
 	return View::make('hello', array('name'=>$name) );
 });
 </code>
 		</pre>
 		<pre class="fragment">
-<code data-trim class="php" data-filename="app/routes.php">
+<code contenteditable data-trim class="php" data-filename="app/routes.php">
 Route::get('/hello/{name}', function($name) {
 	return View::make('hello', compact('name') );
 });
@@ -345,7 +345,7 @@ Route::get('/hello/{name}', function($name) {
 	</div>
 	<div class="fragment-block">
 		<pre class="fragment">
-<code data-trim class="html" data-filename="app/views/hello.php">
+<code contenteditable data-trim class="html" data-filename="app/views/hello.php">
 &lt;html&gt;
 	&lt;body&gt;
 		&lt;p&gt;Hello, &lt;?php echo e($name); ?&gt;!&lt;/p&gt;
@@ -354,7 +354,7 @@ Route::get('/hello/{name}', function($name) {
 </code>
 		</pre>
 		<pre class="fragment">
-<code data-trim class="html" data-filename="app/views/hello.blade.php">
+<code contenteditable data-trim class="html" data-filename="app/views/hello.blade.php">
 &lt;html&gt;
 	&lt;body&gt;
 		&lt;p&gt;Hello, {{{ $name }}}!&lt;/p&gt;
@@ -371,7 +371,7 @@ Route::get('/hello/{name}', function($name) {
 	<section>
 		<h2>Blade Templates</h2>
 		<pre>
-<code data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
+<code contenteditable data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
 &lt;html&gt;
 	&lt;body&gt;
 		// echo and escape output
@@ -385,7 +385,7 @@ Route::get('/hello/{name}', function($name) {
 	<section>
 		<h2>If Statements</h2>
 		<pre>
-<code data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
+<code contenteditable data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
 @if( $name=='Bob' )
 	Good to see you, Bob!
 @elseif( $name=='Mary' )
@@ -404,7 +404,7 @@ Route::get('/hello/{name}', function($name) {
 	<section>
 		<h2>Loops</h2>
 		<pre>
-<code data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
+<code contenteditable data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
 @for ($i = 0; $i < 10; $i++)
 	The current value is {{ $i }}
 @endfor
@@ -423,7 +423,7 @@ Route::get('/hello/{name}', function($name) {
 	<section>
 		<h2>Layouts</h2>
 		<pre>
-<code data-trim class="html" data-filename="app/views/layouts/master.blade.php">
+<code contenteditable data-trim class="html" data-filename="app/views/layouts/master.blade.php">
 &lt;html&gt;
 	&lt;body&gt;
 		@include('header')  {{- app/views/header.blade.php -}}
@@ -440,7 +440,7 @@ Route::get('/hello/{name}', function($name) {
 </code>
 		</pre>
 		<pre>
-<code data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
+<code contenteditable data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
 @extends('layouts.master')
 
 @section('sidebar')
@@ -477,7 +477,7 @@ Route::get('/hello/{name}', function($name) {
 	<section>
 		<h2>Secret Environment Variables</h2>
 		<pre>
-<code data-trim class="php" data-filename=".env.php">
+<code contenteditable data-trim class="php" data-filename=".env.php">
 return array(
 	'MYSQL_USER' => 'dbuser',
 	'MYSQL_PASS' => 'super-secret-sauce',
@@ -489,17 +489,11 @@ return array(
 	<section>
 		<h2>Configuration</h2>
 		<pre>
-<code data-trim class="php" data-filename="app/config/database.php">
+<code contenteditable data-trim class="php" data-filename="app/config/database.php">
 return array(
-
 	'default' => 'mysql',
 
-	...
-
-	'connections' => array(
-
-		...
-
+'connections' => array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
@@ -510,8 +504,7 @@ return array(
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
-
-		...
+	...
 </code>
 		</pre>
 	</section>
@@ -524,7 +517,7 @@ return array(
 	<section>
 		<h2>Migrations</h2>
 		<pre>
-<code data-trim class="bash">
+<code contenteditable data-trim class="bash">
 ./artisan migrate:install
 
 ./artisan migrate:make create_posts_table
@@ -534,7 +527,7 @@ return array(
 
 	<section>
 		<pre>
-<code data-trim class="php" data-filename="app/database/migrations/2014_03_12_123456_create_posts_table.blade.php">
+<code contenteditable data-trim class="php" data-filename="app/database/migrations/2014_03_12_123456_create_posts_table.blade.php">
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -567,7 +560,7 @@ class CreatePostsTable extends Migration {
 
 	<section>
 		<pre>
-<code data-trim class="php">
+<code contenteditable data-trim class="php">
 public function up()
 {
 	Schema::create('posts', function(Blueprint $table) {
@@ -579,7 +572,7 @@ public function up()
 	});
 }
 </code>
-<code data-trim class="php">
+<code contenteditable data-trim class="php">
 public function down()
 {
 	Schema::drop('posts');
