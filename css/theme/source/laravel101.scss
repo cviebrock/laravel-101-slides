@@ -16,6 +16,12 @@
 @import url(//fonts.googleapis.com/css?family=Lato:300);
 @import url(//fonts.googleapis.com/css?family=Loved+by+the+King);
 
+// Font-Awesome vars, mixins and path
+@import "../../../node_modules/font-awesome/scss/variables";
+@import "../../../node_modules/font-awesome/scss/mixins";
+@import "../../../node_modules/font-awesome/scss/path";
+
+
 html * {
 	color-profile: sRGB;
 	rendering-intent: auto;
@@ -102,10 +108,20 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 
 .reveal {
 
-	@import "../../../node_modules/font-awesome/scss/font-awesome.scss";
+  letter-spacing: 0;
+  line-height: 1 !important;
 
-	letter-spacing: 0;
-	line-height: 1 !important;
+
+  // Font-Awesome SASS
+  @import "../../../node_modules/font-awesome/scss/core";
+  @import "../../../node_modules/font-awesome/scss/larger";
+  @import "../../../node_modules/font-awesome/scss/fixed-width";
+  @import "../../../node_modules/font-awesome/scss/list";
+  @import "../../../node_modules/font-awesome/scss/bordered-pulled";
+  @import "../../../node_modules/font-awesome/scss/spinning";
+  @import "../../../node_modules/font-awesome/scss/rotated-flipped";
+  @import "../../../node_modules/font-awesome/scss/stacked";
+  @import "../../../node_modules/font-awesome/scss/icons";
 
 	p {
 		margin-bottom: 0.5em;
@@ -321,9 +337,9 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 		position: absolute;
 		right: 1em;
 		top: -1.5em;
+		letter-spacing: -.05em;
 		font-size: 70%;
 		font-style: italic;
-		letter-spacing: -.05em;
 	}
 
 	.fragment-block {
@@ -350,4 +366,3 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 
 
 }
-
