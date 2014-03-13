@@ -25,7 +25,8 @@ html * {
 // Laravel colors
 $salmon:			#f4726d;
 $white:				#fff;
-$greyLight:		#f5f5f5;
+$greyLighter:	#f5f5f5;
+$greyLight:		#ccc;
 $greyMedium:	#aaa;
 $greyDark:		#777;
 $greyDarker:	#333;
@@ -65,8 +66,8 @@ $heading1TextShadow: 0 1px 2px rgba(0,0,0,0.3);
 $linkColor: $salmon;
 $linkColorHover: darken( $linkColor, 20% );
 
-$navColor: $greyLight;
-$navColorEnabled: $greyMedium;
+$navColor: fade-out( $greyLight, .4 );
+$navColorEnabled: fade-out( $greyMedium, .4 );
 
 
 // Text selection
@@ -201,10 +202,10 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 	}
 
 	.bg-inverse {
-		color: $greyLight;
+		color: $greyLighter;
 
 		.handwriting {
-			color: fade-out( $greyLight, .4 );
+			color: fade-out( $greyLighter, .4 );
 		}
 
 		h1,h2,h3,h4,h5,h6,
@@ -225,9 +226,9 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 		border-bottom: 2px solid;
 	}
 
-	h2:not(.no-border) {
-		border-bottom: 1px solid $greyLight;
-	}
+	// h2:not(.no-border) {
+	// 	border-bottom: 1px solid $greyLighter;
+	// }
 
 	.bookcover {
 		position: absolute;
@@ -300,7 +301,7 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 	}
 
 	pre+pre:not(.fragment) {
-		margin-top: -2em;
+		margin-top: -1em;
 	}
 
 	pre code {
@@ -319,9 +320,10 @@ $monospaceFont: 'The Sans Mono Condensed', 'Ubuntu Mono', monospace;
 		padding: 0 1em;
 		position: absolute;
 		right: 1em;
-		top: 0;
+		top: -1.5em;
 		font-size: 70%;
 		font-style: italic;
+		letter-spacing: -.05em;
 	}
 
 	.fragment-block {

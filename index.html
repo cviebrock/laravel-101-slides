@@ -145,7 +145,7 @@ mposer install
 </section>
 
 
-<section data-background="#706da7" class="bg-inverse">
+<section data-background="#706da7" class="bg-inverse" data-transition="zoom">
 	<h2 class="no-border"><i class="fa fa-exclamation-triangle fa-lg fa-fw"></i> Git it under control</h2>
 	<div class="handwriting fragment" style="left: 10em; top: 4em;">
 		I see what you did.
@@ -198,7 +198,7 @@ mposer install
 </section>
 
 
-<section data-background="#46b87c" class="bg-inverse">
+<section data-background="#46b87c" class="bg-inverse" data-transition="zoom">
 	<h2 class="no-border"><i class="fa fa-wrench fa-lg fa-fw"></i> Our First App</h2>
 	<div class="fragment bookcover skewed spin-in">
 		<img src="/img/basicfun.jpg">
@@ -286,10 +286,10 @@ Route::get('hello/{name?}', 'HelloController@showWelcome');
 <code data-trim class="php" data-filename="app/controllers/HelloController.php">
 class HelloController extends BaseController {
 
-public function showWelcome($name='stranger')
-{
-	return 'Hello, '. e($name) . '!';
-}
+	public function showWelcome($name='stranger')
+	{
+		return 'Hello, '. e($name) . '!';
+	}
 
 }
 </code>
@@ -391,7 +391,7 @@ Route::get('/hello/{name}', function($name) {
 	Hey, where did Bob go?
 @endif
 
-@unless ($signed_in)
+@unless( $signed_in )
 	You are not signed in.
 @endunless
 </code>
@@ -476,8 +476,8 @@ Route::get('/hello/{name}', function($name) {
 		<pre>
 <code data-trim class="php" data-filename=".env.php">
 return array(
-		'MYSQL_USER' => 'dbuser',
-		'MYSQL_PASS' => 'super-secret-sauce',
+	'MYSQL_USER' => 'dbuser',
+	'MYSQL_PASS' => 'super-secret-sauce',
 );
 </code>
 		</pre>

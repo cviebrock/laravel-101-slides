@@ -97,31 +97,31 @@ body {
  *********************************************/
 .reveal .controls div.navigate-left,
 .reveal .controls div.navigate-left.enabled {
-  border-right-color: whitesmoke; }
+  border-right-color: rgba(204, 204, 204, 0.6); }
 
 .reveal .controls div.navigate-right,
 .reveal .controls div.navigate-right.enabled {
-  border-left-color: whitesmoke; }
+  border-left-color: rgba(204, 204, 204, 0.6); }
 
 .reveal .controls div.navigate-up,
 .reveal .controls div.navigate-up.enabled {
-  border-bottom-color: whitesmoke; }
+  border-bottom-color: rgba(204, 204, 204, 0.6); }
 
 .reveal .controls div.navigate-down,
 .reveal .controls div.navigate-down.enabled {
-  border-top-color: whitesmoke; }
+  border-top-color: rgba(204, 204, 204, 0.6); }
 
 .reveal .controls div.navigate-left.enabled:hover {
-  border-right-color: #aaaaaa; }
+  border-right-color: rgba(170, 170, 170, 0.6); }
 
 .reveal .controls div.navigate-right.enabled:hover {
-  border-left-color: #aaaaaa; }
+  border-left-color: rgba(170, 170, 170, 0.6); }
 
 .reveal .controls div.navigate-up.enabled:hover {
-  border-bottom-color: #aaaaaa; }
+  border-bottom-color: rgba(170, 170, 170, 0.6); }
 
 .reveal .controls div.navigate-down.enabled:hover {
-  border-top-color: #aaaaaa; }
+  border-top-color: rgba(170, 170, 170, 0.6); }
 
 /*********************************************
  * PROGRESS BAR
@@ -1151,8 +1151,6 @@ body {
     opacity: 0.4; }
   .reveal h1:not(.no-border) {
     border-bottom: 2px solid; }
-  .reveal h2:not(.no-border) {
-    border-bottom: 1px solid whitesmoke; }
   .reveal .bookcover {
     position: absolute;
     right: 0;
@@ -1202,7 +1200,7 @@ body {
     font-size: .75em;
     box-shadow: none; }
   .reveal pre + pre:not(.fragment) {
-    margin-top: -2em; }
+    margin-top: -1em; }
   .reveal pre code {
     background-color: #333333;
     padding: 1em;
@@ -1217,9 +1215,10 @@ body {
     padding: 0 1em;
     position: absolute;
     right: 1em;
-    top: 0;
+    top: -1.5em;
     font-size: 70%;
-    font-style: italic; }
+    font-style: italic;
+    letter-spacing: -.05em; }
   .reveal .fragment-block {
     position: relative;
     min-height: 8em; }
