@@ -37,6 +37,7 @@ $greyMedium:	#aaa;
 $greyDark:		#777;
 $greyDarker:	#333;
 $greyDarkest: #222;
+$black:       #000;
 $mauve:		  	#706da7;
 $green:				#46b87c;
 $blue: 				#1b91ff;
@@ -316,7 +317,8 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 		box-shadow: none;
 	}
 
-	pre+pre:not(.fragment) {
+	// pre+pre:not(.fragment) {
+	pre+pre {
 		margin-top: -1em;
     code {
       max-height: 12em;
@@ -367,5 +369,11 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 		margin-top: -2em;
 	}
 
+	h2.bar {
+		width: 140%;
+		margin-left: -20%;
+		background: fade-out( $black, .25);
+		color: #fff;
+	}
 
 }

@@ -1194,9 +1194,9 @@ body {
   .reveal pre {
     font-size: .75em;
     box-shadow: none; }
-  .reveal pre + pre:not(.fragment) {
+  .reveal pre + pre {
     margin-top: -1em; }
-    .reveal pre + pre:not(.fragment) code {
+    .reveal pre + pre code {
       max-height: 12em; }
   .reveal pre code {
     background-color: #333333;
@@ -1229,3 +1229,8 @@ body {
       opacity: 0; }
   .reveal .fragment-block + .fragment-block {
     margin-top: -2em; }
+  .reveal h2.bar {
+    width: 140%;
+    margin-left: -20%;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff; }

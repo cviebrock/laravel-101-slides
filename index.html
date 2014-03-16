@@ -225,7 +225,7 @@ echo 'Hello World!';
 	<h2 class="no-border"><i class="fa fa-thumbs-up fa-lg fa-fw"></i>  Built-in Server</h2>
 		<pre>
 <code contenteditable data-trim class="bash">
-./artisan serve --port 8000
+php artisan serve --port 8000
 </code>
 		</pre>
 </section>
@@ -518,9 +518,9 @@ return array(
 		<h2>Migrations</h2>
 		<pre>
 <code contenteditable data-trim class="bash">
-./artisan migrate:install
+php artisan migrate:install
 
-./artisan migrate:make create_posts_table
+php artisan migrate:make create_posts_table
 </code>
 		</pre>
 	</section>
@@ -581,11 +581,152 @@ public function down()
 		</pre>
 	</section>
 
+	<section>
+		<h2>Run Migrations</h2>
+		<pre>
+<code contenteditable data-trim class="bash">
+php artisan migrate
+</code>
+		</pre>
+		<div class="fragment">
+			<h2>Ooops!</h2>
+			<pre>
+<code contenteditable data-trim class="bash">
+php artisan migrate:rollback
+</code>
+			</pre>
+		</div>
+	</section>
+
 </section>
+
+
+<section data-background="/img/models2.jpg" data-background-transition="fade">
+	<h2 class="bar">Models</h2>
+</section>
+
+
+<section>
+	<h2>Eloquent</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+class Posts extends Eloquent {}
+</code>
+	</pre>
+</section>
+
+
+<section class="stack">
+	<section>
+		<h2>Create a New Model</h2>
+		<pre>
+<code contenteditable data-trim class="php">
+$post = Post::create(
+	array(
+		'title'  => 'My First Post',
+		'text'   => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
+		'active' => true,
+	)
+);
+</code>
+		</pre>
+	</section>
+
+	<section>
+		<h2>Retrieving</h2>
+		<pre>
+<code contenteditable data-trim class="php">
+$post = Post::find(1);
+</code>
+<code contenteditable data-trim class="php fragment">
+$post = Post::findOrFail(1);
+</code>
+<code contenteditable data-trim class="php fragment">
+$posts = Post::where('id','>',3)->get();
+$post = Post::where('title','LIKE','laravel')->first();
+</code>
+<code contenteditable data-trim class="php fragment">
+$posts = Post::all();
+</code>
+		</pre>
+	</section>
+
+	<section>
+		<h2>Using</h2>
+		<pre>
+<code contenteditable data-trim class="php">
+$post = Post::find(1);
+
+echo $post->title;
+echo $post->created_at;		// uses Carbon/Carbon for dates
+</code>
+<code contenteditable data-trim class="php fragment">
+$posts = Post::all();
+
+foreach( $posts as $post )
+{
+	echo $post->title;
+}
+</code>
+		</pre>
+	</section>
+
+	<section>
+		<h2>Deleting</h2>
+		<pre>
+<code contenteditable data-trim class="php">
+$post = Post::find(1);
+$post->delete();
+</code>
+<code contenteditable data-trim class="php fragment">
+Post::destroy(1);
+Post::destroy(1,2,3);
+</code>
+<code contenteditable data-trim class="php fragment">
+$lastWeek = Carbon::now()->subWeek();
+Post::where('created_at','<', $lastWeek)->delete();
+</code>
+		</pre>
+	</section>
+
+</section>
+
+
+<section class="stack">
+	<section>
+		<h2>Accessors</h2>
+		<pre>
+<code contenteditable data-trim class="php">
+class Post extends Eloquent {
+
+    public function getTitleAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+}
+</code>
+<code contenteditable data-trim class="php fragment">
+$post = Post::create(array(
+	'title' => 'my first post'
+));
+
+echo $post->title;		// "My First Post"
+</code>
+		</pre>
+	</section>
+
+</section>
+
 
 <section>
 	<h1>THE END</h1>
 </section>
+
+
+
+
+
 
 			</div>
 
@@ -630,6 +771,5 @@ public function down()
 			});
 
 		</script>
-
 	</body>
 </html>
