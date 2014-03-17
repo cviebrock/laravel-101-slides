@@ -325,6 +325,10 @@ $monospaceFont: 'Ubuntu Mono', monospace;
     }
 	}
 
+	.fragment-block pre+pre {
+		margin-top: 15px;
+	}
+
 	pre code {
 		background-color: $greyDarker;
 		padding: 1em;

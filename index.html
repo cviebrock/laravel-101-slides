@@ -340,7 +340,7 @@ Route::get('/hello/{name}', function($name) {
 Route::get('/hello/{name}', function($name) {
 	return View::make('hello', compact('name') );
 });
-			</code>
+</code>
 		</pre>
 	</div>
 	<div class="fragment-block">
@@ -459,7 +459,7 @@ Route::get('/hello/{name}', function($name) {
 
 
 <section data-background="#706da7" class="bg-inverse">
-	<h2 class="no-border"><i class="fa fa-archive fa-lg fa-fw"></i> Database &amp; Models</h2>
+	<h2 class="no-border"><i class="fa fa-archive fa-lg fa-fw"></i> Database</h2>
 	<p>
 		Out-of-the-box support for:
 	</p>
@@ -699,10 +699,10 @@ Post::where('created_at','<', $lastWeek)->delete();
 <code contenteditable data-trim class="php">
 class Post extends Eloquent {
 
-    public function getTitleAttribute($value)
-    {
-        return ucwords($value);
-    }
+		public function getTitleAttribute($value)
+		{
+				return ucwords($value);
+		}
 
 }
 </code>
@@ -716,6 +716,165 @@ echo $post->title;		// "My First Post"
 		</pre>
 	</section>
 
+	<section>
+		<h2>Mutators</h2>
+		<pre>
+<code contenteditable data-trim class="php">
+class Post extends Eloquent {
+
+		public function setTextAttribute($value)
+		{
+				$value = trim($value);
+				$this->attributes['text'] = $value;
+
+				// not limited to modifying the one attribute
+				$this->attributes['excerpt'] = substr($value,0,97) . '...';
+
+		}
+
+}
+</code>
+		</pre>
+	</section>
+</section>
+
+
+
+<section data-background="/img/relationships.jpg" data-background-transition="fade">
+	<h2 class="bar">Relationships</h2>
+</section>
+
+
+
+<section class="stack">
+
+	<section>
+		<h2>One-to-One</h2>
+		<pre>
+<code contenteditable data-trim class="php">
+class Post extends Eloquent {
+
+	// posts table has an `author_id` field
+
+	public function author()
+	{
+		return $this->hasOne('Author');
+	}
+
+}
+</code>
+<code contenteditable data-trim class="php">
+$author = Post::find(1)->author;
+</code>
+		</pre>
+	</section>
+
+	<section>
+		<h2>Inverse</h2>
+		<pre>
+<code contenteditable data-trim class="php">
+class Author extends Eloquent {
+
+	// authors table needs a `post_id` column
+
+	public function post()
+	{
+		return $this->belongsTo('Post');
+	}
+
+}
+</code>
+<code contenteditable data-trim class="php">
+$title = Author::find(1)->post->title;
+</code>
+		</pre>
+	</section>
+
+</section>
+
+
+<section>
+	<h2>One-to-Many</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+class Post extends Eloquent {
+
+	// posts table has `author_id` column
+
+	public function author()
+	{
+		return $this->belongsTo('Author');
+	}
+
+}
+
+class Author extends Eloquent {
+
+	public function posts()
+	{
+		return $this->hasMany('Post');
+	}
+
+}
+</code>
+<code contenteditable data-trim class="php">
+$jims_posts = Author::where('firstname','=','Jim')->posts
+</code>
+	</pre>
+</section>
+
+
+
+<section class="stack">
+
+	<section>
+		<h2>Many-to-Many</h2>
+		<pre>
+<code contenteditable data-trim class="php">
+class Post extends Eloquent {
+	public function tags()
+	{
+		return $this->belongsToMany('Tag');
+	}
+}
+
+class Tags extends Eloquent {
+	public function posts()
+	{
+		return $this->belongsToMany('Post');
+	}
+}
+</code>
+<h3>Pivot Table</h3>
+<code contenteditable data-trim class="php">
+Schema::create('post_tag', function(Blueprint $table) {
+	$table->increments('id');
+	$table->integer('post_id');
+	$table->integer('tag_id');
+});
+</code>
+		</pre>
+	</section>
+
+</section>
+
+
+<section>
+	<h2>Validation</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+$post = new Post(array(
+	'title' => 'My First Post',
+	'text' => 'Lorem hipster YOLO sic amet, semiotics banh mi flexitarian.',
+));
+
+$rules = array(
+	'title' => 'required|min:5',
+	'text' => 'required'
+);
+
+</code>
+	</pre>
 </section>
 
 
@@ -762,7 +921,7 @@ echo $post->title;		// "My First Post"
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.pack.js', async: true, callback: function() {
-						hljs.configure({ tabReplace: '    ' });
+						hljs.configure({ tabReplace: '  ' });
 						hljs.initHighlightingOnLoad();
 					} },
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
