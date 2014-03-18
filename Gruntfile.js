@@ -127,7 +127,7 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'default', [ 'jshint', 'cssmin', 'uglify', 'qunit' ] );
 
 	// Theme task
-	grunt.registerTask( 'themes', [ 'copy', 'sass' ] );
+	grunt.registerTask( 'themes', [ 'copy', 'sass', 'cssmin' ] );
 
 	// Package presentation to archive
 	grunt.registerTask( 'package', [ 'default', 'zip' ] );

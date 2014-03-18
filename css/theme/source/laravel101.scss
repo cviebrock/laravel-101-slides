@@ -15,6 +15,7 @@
 @import url(//fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700);
 @import url(//fonts.googleapis.com/css?family=Lato:300);
 @import url(//fonts.googleapis.com/css?family=Loved+by+the+King);
+@import url(//fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps:700);
 
 // Font-Awesome vars, mixins and path
 @import "../../../node_modules/font-awesome/scss/variables";
@@ -125,7 +126,7 @@ $monospaceFont: 'Ubuntu Mono', monospace;
   @import "../../../node_modules/font-awesome/scss/icons";
 
 	p {
-		margin-bottom: 0.5em;
+		margin-bottom: 1em;
 	}
 
 	.handwriting {
@@ -161,8 +162,11 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 	li > ul {
 		margin-top: 0.5em;
 	}
+	li > ul li {
+		margin-bottom: 0.25em;
+	}
 
-	ul li:not(.no-bullet)::before {
+	ul:not(.no-bullet) li::before {
 		content: "\f105";
 		font-size: .85em;
 		display: inline-block;
@@ -180,6 +184,10 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 	}
 	ul.folders li.file::before {
 		content: "\f15c";
+	}
+
+	ul.caret li::before {
+		content: "\f0da";
 	}
 
 	section img.inline {
@@ -243,6 +251,20 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 		border-bottom: 2px solid;
 	}
 
+	h1.thats-all {
+		font-size: 4em;
+		position: absolute;
+		top: 50%;
+		margin: -1em 0 0 0;
+		width: 100%;
+		color: #fff;
+		text-shadow: .1em .1em .1em rgba(0,0,0,.5);
+		font-weight: 700;
+		font-family: 'Oleo Script Swash Caps', cursive;
+		border-bottom: 0;
+		text-transform: none;
+	}
+
 	// h2:not(.no-border) {
 	// 	border-bottom: 1px solid $greyLighter;
 	// }
@@ -294,6 +316,10 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 					 -o-transform: rotateZ( 7deg ) scale(1);
 							transform: rotateZ( 7deg ) scale(1);
 		}
+		.fragment.spin-in.thats-all.visible {
+			-webkit-transform: rotateZ( 345deg ) scale(1);
+			        transform: rotateZ( 345deg ) scale(1);
+		}
 
 	}
 
@@ -315,18 +341,13 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 	pre {
 		font-size: .75em;
 		box-shadow: none;
+		margin: 0 auto;
 	}
 
-	// pre+pre:not(.fragment) {
-	pre+pre {
+	pre+pre,
+	.fragment-block+pre,
+	pre+.fragment-block {
 		margin-top: -1em;
-    code {
-      max-height: 12em;
-    }
-	}
-
-	.fragment-block pre+pre {
-		margin-top: 15px;
 	}
 
 	pre code {
@@ -339,13 +360,13 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 	}
 
 	pre .filename {
-		color: $greyDark;
-		background: $greyDarker;
-		border-radius: 0.5em 0.5em 0 0;
-		padding: 0 1em;
+		color: #999;
+		background: #444;
+		border-radius: 0.25em;
+		padding: 0 0.5em;
 		position: absolute;
-		right: 1em;
-		top: -1.5em;
+		right: .5em;
+		top: .5em;
 		letter-spacing: -.05em;
 		font-size: 75%;
 		font-style: italic;
@@ -353,7 +374,12 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 
 	.fragment-block {
 		position: relative;
-		min-height: 8em;
+		// min-height: 8em;
+
+		pre+pre {
+			margin-top: 0;
+		}
+
 
 		.fragment,
 		.fragment-first {
@@ -392,11 +418,35 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 			bottom: 1em;
 		}
 
-
 	}
 
 	section.full-height {
 		height: 100%;
 	}
+
+	.more-info {
+		width: 70%;
+		margin: 0 15%;
+		padding: .5em 1em;
+		background-color: fade-out($black, .25);
+		color: $greyLight;
+		position: absolute;
+		bottom: 0;
+		border-radius: .5em;
+		font-size: 90%;
+
+		a {
+			color: $greyLight;
+		}
+		a:hover {
+			color: $white;
+			border-bottom-color: $white;
+		}
+
+		li {
+			margin: 0;
+		}
+	}
+
 
 }

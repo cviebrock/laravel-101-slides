@@ -1,10 +1,11 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700);
+@import url(//fonts.googleapis.com/css?family=Lato:300);
+@import url(//fonts.googleapis.com/css?family=Loved+by+the+King);
+@import url(//fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps:700);
 /**
  * Solarized Light theme for reveal.js.
  * Author: Achim Staebler
  */
-@import url(//fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700);
-@import url(//fonts.googleapis.com/css?family=Lato:300);
-@import url(//fonts.googleapis.com/css?family=Loved+by+the+King);
 /* FONT PATH
  * -------------------------- */
 @font-face {
@@ -1071,7 +1072,7 @@ body {
   .reveal .fa-plus-square-o:before {
     content: "\f196"; }
   .reveal p {
-    margin-bottom: 0.5em; }
+    margin-bottom: 1em; }
   .reveal .handwriting {
     font-family: 'Loved by the King';
     letter-spacing: .03em;
@@ -1094,7 +1095,9 @@ body {
     margin-bottom: 0.5em; }
   .reveal li > ul {
     margin-top: 0.5em; }
-  .reveal ul li:not(.no-bullet)::before {
+  .reveal li > ul li {
+    margin-bottom: 0.25em; }
+  .reveal ul:not(.no-bullet) li::before {
     content: "\f105";
     font-size: .85em;
     display: inline-block;
@@ -1109,6 +1112,8 @@ body {
     content: "\f07b"; }
   .reveal ul.folders li.file::before {
     content: "\f15c"; }
+  .reveal ul.caret li::before {
+    content: "\f0da"; }
   .reveal section img.inline {
     display: inline-block;
     vertical-align: middle;
@@ -1146,6 +1151,18 @@ body {
     opacity: 0.4; }
   .reveal h1:not(.no-border) {
     border-bottom: 2px solid; }
+  .reveal h1.thats-all {
+    font-size: 4em;
+    position: absolute;
+    top: 50%;
+    margin: -1em 0 0 0;
+    width: 100%;
+    color: #fff;
+    text-shadow: 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+    font-family: 'Oleo Script Swash Caps', cursive;
+    border-bottom: 0;
+    text-transform: none; }
   .reveal .bookcover {
     position: absolute;
     right: 0;
@@ -1183,6 +1200,9 @@ body {
     -ms-transform: rotateZ(7deg) scale(1);
     -o-transform: rotateZ(7deg) scale(1);
     transform: rotateZ(7deg) scale(1); }
+  .reveal .slides section .fragment.spin-in.thats-all.visible {
+    -webkit-transform: rotateZ(345deg) scale(1);
+    transform: rotateZ(345deg) scale(1); }
   .reveal .fragment.highlight-active.visible {
     color: rgba(51, 51, 51, 0.3); }
   .reveal .fragment.highlight-active.visible.current-fragment {
@@ -1193,13 +1213,12 @@ body {
     font-family: "Ubuntu Mono", monospace; }
   .reveal pre {
     font-size: .75em;
-    box-shadow: none; }
-  .reveal pre + pre {
+    box-shadow: none;
+    margin: 0 auto; }
+  .reveal pre + pre,
+  .reveal .fragment-block + pre,
+  .reveal pre + .fragment-block {
     margin-top: -1em; }
-    .reveal pre + pre code {
-      max-height: 12em; }
-  .reveal .fragment-block pre + pre {
-    margin-top: 15px; }
   .reveal pre code {
     background-color: #333333;
     padding: 1em;
@@ -1208,19 +1227,20 @@ body {
     max-height: 20em;
     line-height: 1.2; }
   .reveal pre .filename {
-    color: #777777;
-    background: #333333;
-    border-radius: 0.5em 0.5em 0 0;
-    padding: 0 1em;
+    color: #999;
+    background: #444;
+    border-radius: 0.25em;
+    padding: 0 0.5em;
     position: absolute;
-    right: 1em;
-    top: -1.5em;
+    right: .5em;
+    top: .5em;
     letter-spacing: -.05em;
     font-size: 75%;
     font-style: italic; }
   .reveal .fragment-block {
-    position: relative;
-    min-height: 8em; }
+    position: relative; }
+    .reveal .fragment-block pre + pre {
+      margin-top: 0; }
     .reveal .fragment-block .fragment,
     .reveal .fragment-block .fragment-first {
       position: absolute;
@@ -1247,3 +1267,20 @@ body {
       bottom: 1em; }
   .reveal section.full-height {
     height: 100%; }
+  .reveal .more-info {
+    width: 70%;
+    margin: 0 15%;
+    padding: .5em 1em;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #cccccc;
+    position: absolute;
+    bottom: 0;
+    border-radius: .5em;
+    font-size: 90%; }
+    .reveal .more-info a {
+      color: #cccccc; }
+    .reveal .more-info a:hover {
+      color: white;
+      border-bottom-color: white; }
+    .reveal .more-info li {
+      margin: 0; }

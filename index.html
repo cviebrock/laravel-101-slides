@@ -38,7 +38,7 @@
 			<div class="slides">
 
 
-<section data-background="/img/background.jpg" data-background-transition="slide" class="bg-inverse" data-transition="linear">
+<section data-background="/img/background.jpg" data-background-transition="zoom" class="bg-inverse" data-transition="fade">
 	<h1>Laravel 101</h1>
 	<p>
 		Winnipeg PHP Meetup - March 26, 2014
@@ -79,24 +79,22 @@
 		A free, open source, MVC web-application framework.
 	</p>
 	<p class="fragment">
-		<a href="//getcomposer.org"><i class="fa fa-fw fa-cloud-download"></i> laravel.com</a>
+		<a href="//laravel.com"><i class="fa fa-fw fa-cloud-download"></i> laravel.com</a>
 	</p>
 </section>
+
 
 <section class="full-height" data-background="/img/tying-shoes.jpg" data-background-transition="slide" data-transition="linear">
 	<h2 class="bar">Getting Started</h2>
 </section>
 
+
 <section>
 	<h2>Prerequisites</h2>
 	<ul>
-		<li class="fragment roll-in">PHP 5.4.x
-			<em class="aside">was 5.3.7, but get with the times, folks!</em>
-		</li>
-		<li class="fragment roll-in">Mcrypt extension
-		</li>
-		<li class="fragment roll-in">JSON extension
-			<em class="aside">Not included by default in some PHP 5.5 distributions</em>
+		<li class="fragment roll-in">PHP 5.4.x</li>
+		<li class="fragment roll-in">Mcrypt extension</li>
+		<li class="fragment roll-in">JSON extension</li>
 		</li>
 		<li class="fragment roll-in">Composer
 			<em class="aside">
@@ -104,6 +102,11 @@
 				and install it globally!
 			</em>
 		</li>
+</section>
+
+
+<section class="full-height" data-background="/img/vintage-computer3.jpg" data-background-transition="slide" data-transition="linear">
+	<h2 class="bar bottom">Your First Project</h2>
 </section>
 
 
@@ -131,7 +134,7 @@ composer install
 		</div>
 
 		<div class="fragment">
-			<h3>Hrm...</h3>
+			<h3>Hrm…</h3>
 			<pre>
 <code contenteditable data-trim class="bash">
 curl -L -O https://github.com/laravel/laravel/archive/master.zip
@@ -209,18 +212,33 @@ composer install
 </section>
 
 
-<section class="full-height" data-background="/img/vintage-computer3.jpg" data-background-transition="slide" data-transition="linear">
-	<h2 class="bar bottom">Your First Project</h2>
+<section class="full-height" data-background="/img/bob-ross.jpg" data-background-transition="slide" data-transition="linear">
+	<h2 class="bar bottom">Artisan</h2>
 </section>
 
 
-<section data-background="#706da7" class="bg-inverse">
-	<h2 class="no-border"><i class="fa fa-thumbs-up fa-lg fa-fw"></i>  Built-in Server</h2>
+<section class="stack">
+	<section>
+		<h2>Artisan</h2>
+		<p>
+			Command line tool to make working with Laravel easier.
+		</p>
 		<pre>
+<code contenteditable data-trim class="bash">
+php artisan
+</code>
+		</pre>
+	</section>
+
+	<section>
+		<h2>Built-in Server</h2>
+			<pre>
 <code contenteditable data-trim class="bash">
 php artisan serve --port 8000
 </code>
-		</pre>
+			</pre>
+	</section>
+
 </section>
 
 
@@ -234,7 +252,7 @@ php artisan serve --port 8000
 		<pre>
 <code contenteditable data-trim class="php" data-filename="app/routes.php">
 Route::get('/', function() {
-	echo 'Hello World!';
+	return 'Hello World!';
 });
 </code>
 		</pre>
@@ -245,7 +263,7 @@ Route::get('/', function() {
 <section>
 	<h2>Route Parameters</h2>
 	<div class="fragment-block">
-		<pre class="fragment">
+		<pre>
 <code contenteditable data-trim class="php" data-filename="app/routes.php">
 // pass parameters via URI
 
@@ -288,6 +306,15 @@ Route::get('/hello/{name?}', function($name='stranger')
 	</div>
 </section>
 
+
+<section>
+	<h2>Checking Routes</h2>
+	<pre>
+<code contenteditable data-trim class="bash">
+php artisan routes
+</code>
+	</pre>
+</section>
 
 <section class="full-height" data-background="/img/vintage-controller1.jpg" data-background-transition="slide" data-transition="linear">
 	<h2 class="bar">Controllers</h2>
@@ -342,9 +369,44 @@ class UsersController extends BaseController {
 
 
 <section>
+	<h2>Resource Controllers</h2>
+	<pre>
+<code contenteditable data-trim class="bash">
+php artisan controller:make PostsController
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php" data-filename="app/routes.php">
+Route::resource('posts', 'PostsController');
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php" data-filename="app/controllers/PostsController.php">
+class PostsController extends BaseController {
+
+	public function index() {}
+	public function create() {}
+	public function store() {}
+	public function show($id) {}
+	public function edit($id) {}
+	public function update($id) {}
+	public function destroy($id) {}
+
+}
+</code>
+	</pre>
+</section>
+
+
+<section class="full-height" data-background="/img/shanghai.jpg" data-background-transition="slide" data-transition="linear">
+	<h2 class="bar">Views</h2>
+</section>
+
+
+<section>
 	<h2>Passing Data to Views</h2>
 	<div class="fragment-block">
-		<pre class="fragment">
+		<pre>
 <code contenteditable data-trim class="php" data-filename="app/routes.php">
 Route::get('/hello/{name}', function($name) {
 	return View::make('hello', array('name'=>$name) );
@@ -360,7 +422,7 @@ Route::get('/hello/{name}', function($name) {
 		</pre>
 	</div>
 	<div class="fragment-block">
-		<pre class="fragment">
+		<pre>
 <code contenteditable data-trim class="html" data-filename="app/views/hello.php">
 &lt;html&gt;
 	&lt;body&gt;
@@ -480,7 +542,7 @@ Route::get('/hello/{name}', function($name) {
 </section>
 
 
-<section data-background="/img/tape-drives.jpg" data-background-transition="slide" data-transition="linear">
+<section class="full-height" data-background="/img/tape-drives.jpg" data-background-transition="slide" data-transition="linear">
 	<h2 class="bar">Database</h2>
 </section>
 
@@ -502,25 +564,33 @@ Route::get('/hello/{name}', function($name) {
 <section class="stack">
 
 	<section>
-		<h2>Secret Environment Variables</h2>
-		<pre>
-<code contenteditable data-trim class="php" data-filename=".env.php">
-return array(
-	'MYSQL_USER' => 'dbuser',
-	'MYSQL_PASS' => 'super-secret-sauce',
-);
-</code>
-		</pre>
-	</section>
-
-	<section>
 		<h2>Configuration</h2>
-		<pre>
+		<div class="fragment-block">
+			<pre class="fragmentx">
 <code contenteditable data-trim class="php" data-filename="app/config/database.php">
 return array(
 	'default' => 'mysql',
 
-'connections' => array(
+	'connections' => array(
+		'mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'my-project',
+			'username'  => 'db_user',
+			'password'  => 's3creT_pa5sw0rD'
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
+	…
+</code>
+		</pre>
+			<pre class="fragment">
+<code contenteditable data-trim class="php" data-filename="app/config/database.php">
+return array(
+	'default' => 'mysql',
+
+	'connections' => array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
@@ -531,7 +601,20 @@ return array(
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
-	...
+	…
+</code>
+		</pre>
+	</div>
+	</section>
+
+	<section>
+		<h2>Secret Environment Variables</h2>
+		<pre>
+<code contenteditable data-trim class="php" data-filename=".env.php">
+return array(
+	'MYSQL_USER' => 'dbuser',
+	'MYSQL_PASS' => 's3creT_pa5sw0rD',
+);
 </code>
 		</pre>
 	</section>
@@ -539,7 +622,7 @@ return array(
 </section>
 
 
-<section data-background="/img/migration2.jpg" data-background-transition="fade" data-transition="linear">
+<section class="full-height" data-background="/img/migration2.jpg" data-background-transition="slide" data-transition="linear">
 	<h2 class="bar">Migrations</h2>
 </section>
 
@@ -559,8 +642,9 @@ php artisan migrate:make create_posts_table
 	</section>
 
 	<section>
+		<h2>Migration File</h2>
 		<pre>
-<code contenteditable data-trim class="php" data-filename="app/database/migrations/2014_03_12_123456_create_posts_table.blade.php">
+<code contenteditable data-trim class="php" data-filename="app/database/migrations/###_create_posts_table.php">
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -592,13 +676,14 @@ class CreatePostsTable extends Migration {
 	</section>
 
 	<section>
+		<h2>Schema Building</h2>
 		<pre>
 <code contenteditable data-trim class="php">
 public function up()
 {
 	Schema::create('posts', function(Blueprint $table) {
 		$table->increments('id');
-		$table->string('title');
+		$table->string('title', 50);
 		$table->text('text')->nullable();
 		$table->boolean('active')->default(true);
 		$table->timestamps();  // created_at and updated_at
@@ -634,8 +719,8 @@ php artisan migrate:rollback
 </section>
 
 
-<section data-background="/img/models2.jpg" data-background-transition="fade" data-transition="linear">
-	<h2 class="bar">Models</h2>
+<section class="full-height" data-background="/img/models2.jpg" data-background-transition="fade" data-transition="linear">
+	<h2 class="bar bottom">Models</h2>
 </section>
 
 
@@ -940,7 +1025,7 @@ $validator = Validator::make( $data, $rules );
 if ( $validator->fails() )       // ->passes()
 {
 	$messages = $validator->messages();
-	// ...
+	…
 }
 </code>
 	</pre>
@@ -1021,7 +1106,41 @@ $input = Input::file('upload_field');
 
 
 <section class="full-height" data-background="/img/logging1.jpg" data-background-transition="fade" data-transition="linear">
-	<h2 class="bar">Logging</h2>
+	<h2 class="bar top">Logging</h2>
+</section>
+
+
+<section>
+	<h2>Logging</h2>
+	<p>
+		Built on top of <a href="//github.com/seldaek/monolog"><i class="fa fa-fw fa-cloud-download"></i> Monolog</a>
+	</p>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+Log::info('This is some useful information.');
+
+Log::warning('Something could be going wrong.');
+
+Log::error('OMGWTFBBQ!');
+</code>
+	</pre>
+	<p class="fragment">
+		<i class="fa fa-fw fa-file"></i><code>app/storage/logs/laravel.log</code>
+	</p>
+</section>
+
+<section>
+	<h2>Query Logging</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+$queries = DB::getQueryLog();
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+DB::connection()->disableQueryLog();
+</code>
+	</pre>
 </section>
 
 
@@ -1030,12 +1149,364 @@ $input = Input::file('upload_field');
 </section>
 
 
+<section>
+	<h2>Cache Configuration</h2>
+	<ul>
+		<li>
+			<i class="fa fa-fw fa-file"></i><code>app/config/cache.php</code>
+		</li>
+		<li class="fragment">
+			Drivers:
+			<ul class="caret">
+				<li>file</li>
+				<li>database</li>
+				<li>apc</li>
+				<li>memcached</li>
+				<li>redis</li>
+				<li>array</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+
+<section>
+	<h2>Cache Usage</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+Cache::put('key', 'value', $minutes);
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+$expiresAt = Carbon::now()->addHours(10);
+Cache::put('key', 'value', $expiresAt);
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+if (Cache::has('key')) { … }
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+$value = Cache::get('key');
+$value = Cache::get('key', 'default');
+$value = Cache::get('key', function() { return 'default'; });
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+$value = Cache::forever('key', 'value');
+</code>
+	</pre>
+</section>
+
+
+<section>
+	<h2>Advanced Cache Usage</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+$active_users = Cache::remember('active-users', $minutes, function()
+{
+    return Users::where('active',true)
+    	->orderBy('lastname')
+    	->get();
+});
+</code>
+	</pre>
+</section>
+
+
 <section class="full-height" data-background="/img/queues.jpg" data-background-transition="fade" data-transition="linear">
 	<h2 class="bar">Queues</h2>
 </section>
 
+
 <section>
-	<h1>THE END</h1>
+	<h2>Queue Configuration</h2>
+	<ul>
+		<li>
+			<i class="fa fa-fw fa-file"></i><code>app/config/queue.php</code>
+		</li>
+		<li class="fragment">
+			Drivers:
+			<ul class="caret">
+				<li>sync
+					<em class="aside">
+						local syncronous queuing; no requirements
+					</em>
+				</li>
+				<li>beanstalkd
+					<em class="aside">
+						Beanstalkd:
+						<a href="//packagist.org/packages/pda/pheanstalk"><i class="fa fa-cloud-download"></i> pda/pheanstalk</a>
+					</em>
+				</li>
+				<li>sqs
+					<em class="aside">
+						Amazon SQS:
+						<a href="//packagist.org/packages/aws/aws-sdk-php"><i class="fa fa-cloud-download"></i> aws/aws-sdk-php</a>
+					</em>
+				</li>
+				<li>iron
+					<em class="aside">
+						IronMQ:
+						<a href="//packagist.org/packages/iron-io/iron_mq"><i class="fa fa-cloud-download"></i> iron-io/iron_mq</a>
+					</em>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+
+<section>
+	<h2>Queue Usage</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+$data = array('foo' => 'bar');
+
+Queue::push('MyJob', $data);
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+class MyJob {
+
+	public function fire($job, $data)
+	{
+		…
+	}
+
+}
+</code>
+	</pre>
+</section>
+
+
+<section>
+	<h2>Advanced Queue Usage</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+Queue::push('MyJob@someMethod', $data);
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+$date = Carbon::now()->addMinutes(15);
+Queue::later($date, 'MyJob', $data);
+</code>
+	</pre>
+</section>
+
+<section>
+	<h2>Job Handling</h2>
+	<div class="fragment-block">
+	<pre>
+<code contenteditable data-trim class="php">
+public function fire($job, $data)
+{
+    // Process the job...
+
+    $job->delete();
+}
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+public function fire($job, $data)
+{
+    // Process the job...
+
+    $job->release();
+}
+</code>
+	</pre>
+	</div>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+		$job->release( $seconds );
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+if ( $job->attempts() > 3 )
+{
+	…
+}
+</code>
+	</pre>
+
+</section>
+
+
+<section>
+	<h2>Queue Listening</h2>
+	<div class="fragment-block">
+	<pre>
+<code contenteditable data-trim class="bash">
+php artisan queue:listen
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="bash">
+php artisan queue:listen --sleep=5
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="bash">
+php artisan queue:listen --timeout=60
+</code>
+	</pre>
+	</div>
+	<pre class="fragment">
+<code contenteditable data-trim class="bash">
+php artisan queue:work
+</code>
+	</pre>
+</section>
+
+
+<section class="full-height" data-background="/img/mail1.jpg" data-background-transition="fade" data-transition="linear">
+	<h2 class="bar bottom">Mail</h2>
+</section>
+
+
+<section>
+	<h2>Mail Configuration</h2>
+	<ul>
+		<li>
+			Built on top of <a href="//swiftmailer.org/"><i class="fa fa-fw fa-cloud-download"></i> SwiftMailer</a>
+		</li>
+		<li class="fragment">
+			<i class="fa fa-fw fa-file"></i><code>app/config/mail.php</code>
+		</li>
+		<li class="fragment">
+			Drivers:
+			<ul class="caret">
+				<li>smtp</li>
+				<li>mail</li>
+				<li>sendmail</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+
+<section>
+	<h2>Mail Usage</h2>
+	<div class="fragment-block">
+	<pre>
+<code contenteditable data-trim class="php">
+Mail::send('emails.view', $data, function($message)
+{
+	$message->to('colin@example.com', 'Colin Viebrock')
+		->subject('Welcome!');
+});
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+Mail::send( array('emails.view.html', 'emails.view.text'), $data, function($message)
+{
+	$message->to('colin@example.com', 'Colin Viebrock')
+		->subject('Welcome!');
+});
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+Mail::send( array('emails.view.html', 'emails.view.text'), $data, function($message)
+{
+	$message->to('colin@example.com', 'Colin Viebrock')
+		->subject('Welcome!')
+		->cc('bar@example.com')
+		->bcc('snoop@nsa.gov');
+});
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+Mail::send( array('emails.view.html', 'emails.view.text'), $data, function($message)
+{
+	$message->to('colin@example.com', 'Colin Viebrock')
+		->subject('Welcome!')
+		->cc('bar@example.com')
+		->bcc('snoop@nsa.gov');
+
+	$message->attach($pathToFile);
+});
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+Mail::send( array('emails.view.html', 'emails.view.text'), $data, function($message)
+{
+	$message->to('colin@example.com', 'Colin Viebrock')
+		->subject('Welcome!')
+		->cc('bar@example.com')
+		->bcc('snoop@nsa.gov');
+
+	$message->attach($pathToFile, array('as' => $display, 'mime' => $mime));
+});
+</code>
+	</pre>
+	</div>
+</section>
+
+
+<section>
+	<h2>Inline data</h2>
+	<pre>
+<code contenteditable data-trim class="html">
+&lt;body&gt;
+	Here is an image <img src="{{ $message->embed($pathToFile) }}">
+&lt;/body&gt;
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="html">
+&lt;body&gt;
+	Here is raw image data <img src="{{ $message->embedData($data, $name) }}">
+&lt;/body&gt;
+</code>
+	</pre>
+</section>
+
+
+<section>
+	<h2>Queueing Mail</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+Mail::queue('emails.view', $data, function($message)
+{
+	$message->to('colin@example.com', 'Colin Viebrock')
+		->subject('Welcome!');
+});
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+Mail::later($seconds, 'emails.view', $data, function($message)
+{
+	$message->to('colin@example.com', 'Colin Viebrock')
+		->subject('Welcome!');
+});
+</code>
+	</pre>
+</section>
+
+
+<section class="full-height" data-background="/img/thats-all-folks.png" data-background-transition="zoom" data-transition="zoom">
+	<h1 class="thats-all fragment spin-in">That&rsquo;s All Folks!</h1>
+	<div class="more-info fragment">
+		<i class="fa fa-3x fa-github-square"></i>
+		<ul>
+			<li><a href="//github.com/cviebrock/laravel-101">github.com/cviebrock/laravel-101</a></li>
+			<li><a href="//github.com/cviebrock/laravel-101/slides">github.com/cviebrock/laravel-101-slides</a></li>
+		</ul>
+	</div>
 </section>
 
 
