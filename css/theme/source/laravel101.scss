@@ -325,6 +325,10 @@ $monospaceFont: 'Ubuntu Mono', monospace;
     }
 	}
 
+	.fragment-block pre+pre {
+		margin-top: 15px;
+	}
+
 	pre code {
 		background-color: $greyDarker;
 		padding: 1em;
@@ -343,7 +347,7 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 		right: 1em;
 		top: -1.5em;
 		letter-spacing: -.05em;
-		font-size: 65%;
+		font-size: 75%;
 		font-style: italic;
 	}
 
@@ -371,9 +375,28 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 
 	h2.bar {
 		width: 140%;
-		margin-left: -20%;
+		margin: -1em 0 0 -20%;
 		background: fade-out( $black, .25);
 		color: #fff;
+		font-size: 3em;
+		position: absolute;
+		top: 50%;
+
+		&.top {
+			top: 1em;
+			bottom: auto;
+		}
+
+		&.bottom {
+			top: auto;
+			bottom: 1em;
+		}
+
+
+	}
+
+	section.full-height {
+		height: 100%;
 	}
 
 }

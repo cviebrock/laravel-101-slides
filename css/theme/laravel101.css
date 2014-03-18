@@ -1,10 +1,10 @@
-@import url(//fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700);
-@import url(//fonts.googleapis.com/css?family=Lato:300);
-@import url(//fonts.googleapis.com/css?family=Loved+by+the+King);
 /**
  * Solarized Light theme for reveal.js.
  * Author: Achim Staebler
  */
+@import url(//fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700);
+@import url(//fonts.googleapis.com/css?family=Lato:300);
+@import url(//fonts.googleapis.com/css?family=Loved+by+the+King);
 /* FONT PATH
  * -------------------------- */
 @font-face {
@@ -1198,6 +1198,8 @@ body {
     margin-top: -1em; }
     .reveal pre + pre code {
       max-height: 12em; }
+  .reveal .fragment-block pre + pre {
+    margin-top: 15px; }
   .reveal pre code {
     background-color: #333333;
     padding: 1em;
@@ -1214,7 +1216,7 @@ body {
     right: 1em;
     top: -1.5em;
     letter-spacing: -.05em;
-    font-size: 65%;
+    font-size: 75%;
     font-style: italic; }
   .reveal .fragment-block {
     position: relative;
@@ -1231,6 +1233,17 @@ body {
     margin-top: -2em; }
   .reveal h2.bar {
     width: 140%;
-    margin-left: -20%;
+    margin: -1em 0 0 -20%;
     background: rgba(0, 0, 0, 0.75);
-    color: #fff; }
+    color: #fff;
+    font-size: 3em;
+    position: absolute;
+    top: 50%; }
+    .reveal h2.bar.top {
+      top: 1em;
+      bottom: auto; }
+    .reveal h2.bar.bottom {
+      top: auto;
+      bottom: 1em; }
+  .reveal section.full-height {
+    height: 100%; }
