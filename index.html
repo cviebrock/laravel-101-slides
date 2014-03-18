@@ -38,7 +38,7 @@
 			<div class="slides">
 
 
-<section data-background="#f4726d" class="bg-inverse">
+<section data-background="/img/background.jpg" data-background-transition="slide" class="bg-inverse" data-transition="linear">
 	<h1>Laravel 101</h1>
 	<p>
 		Winnipeg PHP Meetup - March 26, 2014
@@ -73,7 +73,7 @@
 </section>
 
 
-<section data-background="#f4726d" class="bg-inverse">
+<section data-background="/img/background.jpg" data-background-transition="slide" class="bg-inverse" data-transition="linear">
 	<h1>Laravel</h1>
 	<p class="fragment">
 		A free, open source, MVC web-application framework.
@@ -83,6 +83,9 @@
 	</p>
 </section>
 
+<section class="full-height" data-background="/img/tying-shoes.jpg" data-background-transition="slide" data-transition="linear">
+	<h2 class="bar">Getting Started</h2>
+</section>
 
 <section>
 	<h2>Prerequisites</h2>
@@ -156,8 +159,13 @@ composer install
 </section>
 
 
+<section class="full-height" data-background="/img/cabinet.jpg" data-background-transition="slide" data-transition="linear">
+	<h2 class="bar">Project Structure</h2>
+</section>
+
+
 <section>
-	<h2>Project Structure</h2>
+	<h2>Project Folders</h2>
 	<ul class="folders">
 		<li>app
 			<span class="handwriting fragment inline padded highlight-active">&lt; your stuff</span>
@@ -179,7 +187,7 @@ composer install
 
 
 <section>
-	<h2>Project Structure</h2>
+	<h2>Application Folders</h2>
 	<ul class="folders">
 		<li>app
 			<ul>
@@ -201,23 +209,8 @@ composer install
 </section>
 
 
-<section data-background="#46b87c" class="bg-inverse" data-transition="zoom">
-	<h2 class="no-border"><i class="fa fa-wrench fa-lg fa-fw"></i> Our First App</h2>
-	<div class="fragment bookcover skewed spin-in">
-		<img src="/img/basicfun.jpg">
-	</div>
-</section>
-
-
-<section>
-	<h2>Basic Routing</h2>
-		<pre>
-<code contenteditable data-trim class="php" data-filename="app/routes.php">
-Route::get('/', function() {
-echo 'Hello World!';
-});
-</code>
-		</pre>
+<section class="full-height" data-background="/img/vintage-computer3.jpg" data-background-transition="slide" data-transition="linear">
+	<h2 class="bar bottom">Your First Project</h2>
 </section>
 
 
@@ -229,6 +222,24 @@ php artisan serve --port 8000
 </code>
 		</pre>
 </section>
+
+
+<section class="full-height" data-background="/img/vintage-routing1.jpg" data-background-transition="slide" data-transition="linear">
+	<h2 class="bar">Routing</h2>
+</section>
+
+
+<section>
+	<h2>Basic Routing</h2>
+		<pre>
+<code contenteditable data-trim class="php" data-filename="app/routes.php">
+Route::get('/', function() {
+	echo 'Hello World!';
+});
+</code>
+		</pre>
+</section>
+
 
 
 <section>
@@ -275,6 +286,11 @@ Route::get('/hello/{name?}', function($name='stranger')
 </code>
 		</pre>
 	</div>
+</section>
+
+
+<section class="full-height" data-background="/img/vintage-controller1.jpg" data-background-transition="slide" data-transition="linear">
+	<h2 class="bar">Controllers</h2>
 </section>
 
 
@@ -366,10 +382,16 @@ Route::get('/hello/{name}', function($name) {
 </section>
 
 
+<section class="full-height" data-background="/img/blade1.png" data-background-transition="zoom" data-transition="linear">
+	<h2 class="bar bottom">Blade Templating</h2>
+</section>
+
+
+
 <section class="stack">
 
 	<section>
-		<h2>Blade Templates</h2>
+		<h2>Outputting Data</h2>
 		<pre>
 <code contenteditable data-trim class="php" data-filename="app/views/VIEWNAME.blade.php">
 &lt;html&gt;
@@ -458,8 +480,13 @@ Route::get('/hello/{name}', function($name) {
 </section>
 
 
-<section data-background="#706da7" class="bg-inverse">
-	<h2 class="no-border"><i class="fa fa-archive fa-lg fa-fw"></i> Database</h2>
+<section data-background="/img/tape-drives.jpg" data-background-transition="slide" data-transition="linear">
+	<h2 class="bar">Database</h2>
+</section>
+
+
+<section>
+	<h2>Supported Databases</h2>
 	<p>
 		Out-of-the-box support for:
 	</p>
@@ -512,10 +539,16 @@ return array(
 </section>
 
 
+<section data-background="/img/migration2.jpg" data-background-transition="fade" data-transition="linear">
+	<h2 class="bar">Migrations</h2>
+</section>
+
+
+
 <section class="stack">
 
 	<section>
-		<h2>Migrations</h2>
+		<h2>Preparing</h2>
 		<pre>
 <code contenteditable data-trim class="bash">
 php artisan migrate:install
@@ -568,7 +601,7 @@ public function up()
 		$table->string('title');
 		$table->text('text')->nullable();
 		$table->boolean('active')->default(true);
-		$table->timestamps();
+		$table->timestamps();  // created_at and updated_at
 	});
 }
 </code>
@@ -601,7 +634,7 @@ php artisan migrate:rollback
 </section>
 
 
-<section data-background="/img/models2.jpg" data-background-transition="fade">
+<section data-background="/img/models2.jpg" data-background-transition="fade" data-transition="linear">
 	<h2 class="bar">Models</h2>
 </section>
 
@@ -658,7 +691,7 @@ $posts = Post::all();
 $post = Post::find(1);
 
 echo $post->title;
-echo $post->created_at;		// uses Carbon/Carbon for dates
+echo $post->created_at;		// uses Carbon package for date handling
 </code>
 <code contenteditable data-trim class="php fragment">
 $posts = Post::all();
@@ -690,6 +723,13 @@ Post::where('created_at','<', $lastWeek)->delete();
 	</section>
 
 </section>
+
+
+
+<section class="full-height" data-background="/img/simpsons-fish.jpg" data-background-transition="fade" data-transition="linear">
+	<h2 class="bar bottom">Accessors &amp; Mutators</h2>
+</section>
+
 
 
 <section class="stack">
@@ -740,7 +780,7 @@ class Post extends Eloquent {
 
 
 
-<section data-background="/img/relationships.jpg" data-background-transition="fade">
+<section class="full-height" data-background="/img/relationships.jpg" data-background-transition="slide" data-transition="linear">
 	<h2 class="bar">Relationships</h2>
 </section>
 
@@ -845,12 +885,17 @@ class Tags extends Eloquent {
 	}
 }
 </code>
-<h3>Pivot Table</h3>
+		</pre>
+	</section>
+
+	<section>
+		<h2>Pivot Table</h2>
+		<pre>
 <code contenteditable data-trim class="php">
 Schema::create('post_tag', function(Blueprint $table) {
 	$table->increments('id');
-	$table->integer('post_id');
-	$table->integer('tag_id');
+	$table->integer('post_id')->unsigned()->index();
+	$table->integer('tag_id')->unsigned()->index();
 });
 </code>
 		</pre>
@@ -859,24 +904,135 @@ Schema::create('post_tag', function(Blueprint $table) {
 </section>
 
 
+
+<section class="full-height" data-background="/img/validate.jpg" data-background-transition="fade">
+	<h2 class="bar bottom">Validation</h2>
+</section>
+
+
 <section>
-	<h2>Validation</h2>
+	<h2>Validation Rules</h2>
 	<pre>
 <code contenteditable data-trim class="php">
-$post = new Post(array(
+$data = array(
 	'title' => 'My First Post',
-	'text' => 'Lorem hipster YOLO sic amet, semiotics banh mi flexitarian.',
+	'text'  => 'Lorem hipster YOLO sic amet, semiotics banh mi flexitarian.',
 ));
 
 $rules = array(
 	'title' => 'required|min:5',
-	'text' => 'required'
+	'text'  => 'required|max:100'
 );
+</code>
+	</pre>
+</section>
+
+
+<section>
+	<h2>Validation</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+$validator = Validator::make( $data, $rules );
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+if ( $validator->fails() )       // ->passes()
+{
+	$messages = $validator->messages();
+	// ...
+}
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+if ( $messages->has('email') )
+{
+	echo $messages->first('email', '<p>:message</p>');
+}
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+$messages->get('field');
+$messages->all();
+</code>
+	</pre>
+</section>
+
+
+<section class="full-height" data-background="/img/forms2.jpg" data-background-transition="slide" data-transition="linear">
+	<h2 class="bar bottom">Form Handing</h2>
+</section>
+
+
+<section>
+	<h2>Building Forms</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+{{ Form::open() }}
+
+{{ Form::label('title') }}
+{{ Form::text('title', null, array('class'=>'form-control') }}
+
+{{ Form::label('text', 'Enter the full text:') }}
+{{ Form::textarea('text', null, array('placeholder'=>'Enter the text') }}
+
+{{ Form::email('email') }}
+
+{{ Form::checkbox('is_active', 1, null, array('tabindex'=>4) }}
+	{{ Form::label('is_active', 'Yes') }}
+
+{{ Form::submit('Send it!')}}
+
+{{ Form::close() }}
 
 </code>
 	</pre>
 </section>
 
+
+<section>
+	<h2>Handling Input</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+$input = Input::get('field','default');
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+$input = Input::only('firstname','lastname');
+$input = Input::except('credit_card');
+$input = Input::get('choices.0.name');
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+$input = Input::all();
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+$input = Input::file('upload_field');
+</code>
+	</pre>
+</section>
+
+
+
+<section class="full-height" data-background="/img/logging1.jpg" data-background-transition="fade" data-transition="linear">
+	<h2 class="bar">Logging</h2>
+</section>
+
+
+<section class="full-height" data-background="/img/caching1.jpg" data-background-transition="fade" data-transition="linear">
+	<h2 class="bar bottom">Caching</h2>
+</section>
+
+
+<section class="full-height" data-background="/img/queues.jpg" data-background-transition="fade" data-transition="linear">
+	<h2 class="bar">Queues</h2>
+</section>
 
 <section>
 	<h1>THE END</h1>
