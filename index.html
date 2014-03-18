@@ -11,7 +11,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/laravel101.css" id="theme">
+		<link rel="stylesheet" href="css/theme/laravel101.min.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -700,6 +700,29 @@ Post::where('created_at','<', $lastWeek)->delete();
 class Post extends Eloquent {
 
     public function getTitleAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+}
+</code>
+<code contenteditable data-trim class="php fragment">
+$post = Post::create(array(
+	'title' => 'my first post'
+));
+
+echo $post->title;		// "My First Post"
+</code>
+		</pre>
+	</section>
+
+	<section>
+		<h2>Mutators</h2>
+		<pre>
+<code contenteditable data-trim class="php">
+class Post extends Eloquent {
+
+    public function setTitleAttribute($value)
     {
         return ucwords($value);
     }

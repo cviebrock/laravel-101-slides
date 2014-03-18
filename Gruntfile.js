@@ -1,6 +1,6 @@
 /* global module:false */
 module.exports = function(grunt) {
-	var port = grunt.option('port') || 8000;
+	var port = grunt.option('port') || 8888;
 	// Project configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 				' *\n' +
 				' * Copyright (C) 2013 Hakim El Hattab, http://hakim.se\n' +
 				' * Slide Theme Copyright (C) 2014 Colin Viebrock, http://viebrock.ca\n' +
-				' */'
+				' */\n'
 		},
 
 		qunit: {
@@ -33,7 +33,8 @@ module.exports = function(grunt) {
 		cssmin: {
 			compress: {
 				files: {
-					'css/reveal.min.css': [ 'css/reveal.css' ]
+					'css/reveal.min.css': [ 'css/reveal.css' ],
+					'css/theme/laravel101.min.css': [ 'css/theme/laravel101.css' ]
 				}
 			}
 		},
@@ -50,15 +51,6 @@ module.exports = function(grunt) {
 		sass: {
 			main: {
 				files: {
-					// 'css/theme/default.css': 'css/theme/source/default.scss',
-					// 'css/theme/beige.css': 'css/theme/source/beige.scss',
-					// 'css/theme/night.css': 'css/theme/source/night.scss',
-					// 'css/theme/serif.css': 'css/theme/source/serif.scss',
-					// 'css/theme/simple.css': 'css/theme/source/simple.scss',
-					// 'css/theme/sky.css': 'css/theme/source/sky.scss',
-					// 'css/theme/moon.css': 'css/theme/source/moon.scss',
-					// 'css/theme/solarized.css': 'css/theme/source/solarized.scss',
-					// 'css/theme/blood.css': 'css/theme/source/blood.scss',
 					'css/theme/laravel101.css': 'css/theme/source/laravel101.scss'
 				}
 			}
