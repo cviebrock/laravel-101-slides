@@ -1,6 +1,6 @@
 /**
- * Solarized Light theme for reveal.js.
- * Author: Achim Staebler
+ * Laravel 101 theme for reveal.js.
+ * Author: Colin Viebrock
  */
 
 
@@ -113,7 +113,6 @@ $monospaceFont: 'Ubuntu Mono', monospace;
   letter-spacing: 0;
   line-height: 1 !important;
 
-
   // Font-Awesome SASS
   @import "../../../node_modules/font-awesome/scss/core";
   @import "../../../node_modules/font-awesome/scss/larger";
@@ -139,8 +138,8 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 		word-spacing: -.3em;
 		color: fade-out( $mainColor, .5 );
 		-webkit-backface-visibility: hidden;
-		-webkit-transform:rotate(-7deg);
-						transform:rotate(-7deg);
+		-webkit-transform:rotate(345deg);
+						transform:rotate(345deg);
 	}
 	.handwriting:not(.inline) {
 			position: absolute;
@@ -196,18 +195,6 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 
 	ul.caret li::before {
 		content: "\f0da";
-	}
-
-	ul li.git-bullet::before {
-		content: "\f09b";
-	}
-
-	ul li.book-bullet::before {
-		content: "\f02d";
-	}
-
-	ul li.laracasts-bullet::before {
-		content: "\f16a";
 	}
 
 	section img.inline {
@@ -289,15 +276,17 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 	// 	border-bottom: 1px solid $greyLighter;
 	// }
 
-	.bookcover {
-		position: absolute;
-		right: 0;
-		bottom: -7em;
-		height: 14em;
+	.wat {
+		position: relative;
+		top: -8em;
+		right: -35%;
+		height: 8em;
 		img {
 			height: 100%;
 			width: auto;
-			border: 1px solid rgba(0,0,0,.5);
+			border: 20px solid #e8eaec;
+			border-bottom-width: 40px;
+			margin: 0;
 			box-shadow: 5px 5px 15px 4px rgba(0,0,0,.4);
 		}
 	}
@@ -305,14 +294,39 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 
 	.slides section {
 
+		.fragment.stamp-in {
+			opacity: 0;
+			-webkit-backface-visibility: hidden;
+			-webkit-transform: scale(10);
+				 -moz-transform: scale(10);
+					-ms-transform: scale(10);
+					 -o-transform: scale(10);
+							transform: scale(10);
+		}
+		.fragment.stamp-in.visible {
+			opacity: 1;
+			-webkit-transform: scale(1);
+				 -moz-transform: scale(1);
+					-ms-transform: scale(1);
+					 -o-transform: scale(1);
+							transform: scale(1);
+		}
+		.fragment.stamp-in.visible.skewed {
+			opacity: 1;
+			-webkit-transform: rotateZ( 7deg ) scale(1);
+				 -moz-transform: rotateZ( 7deg ) scale(1);
+					-ms-transform: rotateZ( 7deg ) scale(1);
+					 -o-transform: rotateZ( 7deg ) scale(1);
+							transform: rotateZ( 7deg ) scale(1);
+		}
 		.fragment.spin-in {
 			opacity: 0;
+			-webkit-backface-visibility: hidden;
 			-webkit-transition-duration: .5s;
 				 -moz-transition-duration: .5s;
 					-ms-transition-duration: .5s;
 					 -o-transition-duration: .5s;
 							transition-duration: .5s;
-
 			-webkit-transform: rotateZ( -359deg ) scale(0.1);
 				 -moz-transform: rotateZ( -359deg ) scale(0.1);
 					-ms-transform: rotateZ( -359deg ) scale(0.1);
@@ -327,9 +341,7 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 					 -o-transform: rotateZ( 0 ) scale(1);
 							transform: rotateZ( 0 ) scale(1);
 		}
-		.fragment.spin-in.skewed.visible {
-			opacity: 1;
-			-webkit-backface-visibility: hidden;
+		.fragment.spin-in.visible.skewed {
 			-webkit-transform: rotateZ( 7deg ) scale(1);
 				 -moz-transform: rotateZ( 7deg ) scale(1);
 					-ms-transform: rotateZ( 7deg ) scale(1);
@@ -374,7 +386,6 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 		background-color: $greyDarker;
 		padding: 1em;
 		border-radius: 0.5em;
-		box-shadow: 0 0 6px rgba(0,0,0,.3);
 		max-height: 20em;
 		line-height: 1.2;
 	}
@@ -415,27 +426,37 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 
 	}
 
-	.fragment-block + .fragment-block {
-		margin-top: -2em;
-	}
+	// .fragment-block + .fragment-block {
+	// 	margin-top: -2em;
+	// }
 
 	h2.bar {
-		width: 140%;
-		margin: -1em 0 0 -20%;
+		width: 200%;
+		margin: 0 -50%;
 		background: fade-out( $black, .25);
 		color: #fff;
 		font-size: 3em;
 		position: absolute;
-		top: 50%;
+		top: auto;
+		bottom: 1.5em;
 
 		&.top {
 			top: 1em;
 			bottom: auto;
 		}
 
-		&.bottom {
-			top: auto;
-			bottom: 1em;
+		&.middle {
+			top: 50%;
+			bottom: auto;
+		}
+
+		&.consecutive {
+			position: relative;
+			top: 0;
+			bottom: 0;
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+			font-size: 2.5em;
 		}
 
 	}
@@ -451,4 +472,12 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 	}
 
 
+}
+
+.reveal[data-background-transition=slide]>.backgrounds .slide-background,
+.reveal>.backgrounds .slide-background[data-background-transition=slide] {
+	opacity: 0;
+	&.present {
+		opacity: 1;
+	}
 }

@@ -55,7 +55,7 @@
 		<li class="fragment roll-in">Involved in PHP since 1997
 			<em class="aside">with a few years off for good behaviour</em>
 		</li>
-		<li class="fragment roll-in">Previous founder of
+		<li class="fragment roll-in">Founder of
 			<a href="//greengarage.ca">Green Garage</a>,
 			<a href="//prestoh.com/">Prestoh</a> &amp;
 			<a href="//easydns.com/">easyDNS</a>
@@ -76,7 +76,13 @@
 <section data-background="/img/background.jpg" data-background-transition="slide" class="bg-inverse" data-transition="linear">
 	<h1>Laravel</h1>
 	<p class="fragment">
-		A free, open source, MVC web-application framework.
+		A free, open source, MVC web-application framework
+	</p>
+	<p class="fragment">
+		2011 (v1.0) &mdash; current (v4.1.24)
+	</p>
+	<p class="fragment">
+		Package-based dependency management
 	</p>
 	<p class="fragment">
 		<a href="//laravel.com"><i class="fa fa-fw fa-cloud-download"></i> laravel.com</a>
@@ -106,36 +112,25 @@
 
 
 <section class="full-height" data-background="/img/vintage-computer3.jpg" data-background-transition="slide" data-transition="linear">
-	<h2 class="bar bottom">Your First Project</h2>
+	<h2 class="bar">Your First Project</h2>
 </section>
 
 
 <section>
 	<h2>Starting a New Project</h2>
-	<div class="fragment-block">
-		<div class="fragment hide-after">
-			<h3>Easiest</h3>
-			<pre>
+	<pre>
 <code contenteditable data-trim class="bash">
 composer create-project laravel/laravel my-project --prefer-dist
 </code>
-			</pre>
-		</div>
-
-		<div class="fragment hide-after">
-			<h3>Somewhat Easy</h3>
-			<pre>
+	</pre>
+	<pre class="fragment">
 <code contenteditable data-trim class="bash">
 git clone git@github.com:laravel/laravel.git my-project
 cd my-project
 composer install
-			</code
-			></pre>
-		</div>
-
-		<div class="fragment">
-			<h3>Hrm…</h3>
-			<pre>
+</code>
+	</pre>
+	<pre class="fragment">
 <code contenteditable data-trim class="bash">
 curl -L -O https://github.com/laravel/laravel/archive/master.zip
 unzip master.zip
@@ -143,14 +138,10 @@ mv laravel-master my-project
 cd my-project
 composer install
 </code>
-			</pre>
-		</div>
-
-		<div class="fragment bookcover skewed spin-in" >
-			<img src="/img/wat.jpg">
-		</div>
+	</pre>
+	<div class="fragment wat skewed stamp-in" >
+		<img src="/img/wat.jpg">
 	</div>
-
 </section>
 
 
@@ -213,7 +204,7 @@ composer install
 
 
 <section class="full-height" data-background="/img/bob-ross.jpg" data-background-transition="slide" data-transition="linear">
-	<h2 class="bar bottom">Artisan</h2>
+	<h2 class="bar">Artisan</h2>
 </section>
 
 
@@ -308,7 +299,7 @@ Route::get('/hello/{name?}', function($name='stranger')
 
 
 <section>
-	<h2>Checking Routes</h2>
+	<h2>Listing Routes</h2>
 	<pre>
 <code contenteditable data-trim class="bash">
 php artisan routes
@@ -395,6 +386,11 @@ class PostsController extends BaseController {
 }
 </code>
 	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="bash">
+php artisan routes
+</code>
+	</pre>
 </section>
 
 
@@ -445,7 +441,7 @@ Route::get('/hello/{name}', function($name) {
 
 
 <section class="full-height" data-background="/img/blade1.png" data-background-transition="zoom" data-transition="linear">
-	<h2 class="bar bottom">Blade Templating</h2>
+	<h2 class="bar">Blade Templating</h2>
 </section>
 
 
@@ -720,7 +716,7 @@ php artisan migrate:rollback
 
 
 <section class="full-height" data-background="/img/models2.jpg" data-background-transition="fade" data-transition="linear">
-	<h2 class="bar bottom">Models</h2>
+	<h2 class="bar">Models</h2>
 </section>
 
 
@@ -812,7 +808,7 @@ Post::where('created_at','<', $lastWeek)->delete();
 
 
 <section class="full-height" data-background="/img/simpsons-fish.jpg" data-background-transition="fade" data-transition="linear">
-	<h2 class="bar bottom">Accessors &amp; Mutators</h2>
+	<h2 class="bar">Accessors &amp; Mutators</h2>
 </section>
 
 
@@ -943,7 +939,7 @@ class Author extends Eloquent {
 }
 </code>
 <code contenteditable data-trim class="php">
-$jims_posts = Author::where('firstname','=','Jim')->posts
+$my_posts = Author::where('firstname','=','Colin')->posts
 </code>
 	</pre>
 </section>
@@ -963,7 +959,7 @@ class Post extends Eloquent {
 	}
 }
 
-class Tags extends Eloquent {
+class Tag extends Eloquent {
 	public function posts()
 	{
 		return $this->belongsToMany('Post');
@@ -989,8 +985,28 @@ Schema::create('post_tag', function(Blueprint $table) {
 </section>
 
 
+<section>
+	<h2>Eager Loading</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+Post::with('author')->get();
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+Post::with('author','tags')->get();
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+Tag::with('posts.author')->get();
+</code>
+	</pre>
+</section>
+
+
 <section class="full-height" data-background="/img/forms2.jpg" data-background-transition="slide" data-transition="linear">
-	<h2 class="bar bottom">Form Handing</h2>
+	<h2 class="bar">Form Handing</h2>
 </section>
 
 
@@ -1050,7 +1066,7 @@ $input = Input::file('upload_field');
 
 
 <section class="full-height" data-background="/img/validate.jpg" data-background-transition="fade">
-	<h2 class="bar bottom">Validation</h2>
+	<h2 class="bar">Validation</h2>
 </section>
 
 
@@ -1105,8 +1121,29 @@ $messages->all();
 </section>
 
 
+<section>
+	<h2>Validation Rules</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+$rules = array(
+	'firstname'  => 'required',
+	'lastname'   => 'alpha',
+	'email'      => 'email',
+	'age'        => 'integer|between:18,65',
+	'agree'      => array('required','accepted'),
+	'website'    => 'url',
+	'password'   => 'confirmed',              // implies matching 'password_confirmation' data
+	'company_id' => 'exists:companies,id',
+	'gender'     => 'in:male,female',
+	'photo'      => 'mimes:jpeg,png|max:100', // kilobytes
+	'postalcode' => 'regex:^[A-Z][0-9][A-Z] ?[0-9][A-Z][0-9]$'
+);
+</code>
+	</pre>
+</section>
+
 <section class="full-height" data-background="/img/logging1.jpg" data-background-transition="fade" data-transition="linear">
-	<h2 class="bar top">Logging</h2>
+	<h2 class="bar">Logging</h2>
 </section>
 
 
@@ -1118,6 +1155,8 @@ $messages->all();
 	<pre class="fragment">
 <code contenteditable data-trim class="php">
 Log::info('This is some useful information.');
+
+Log::info('Information with context', array('context' => 'Other helpful information'));
 
 Log::warning('Something could be going wrong.');
 
@@ -1145,7 +1184,7 @@ DB::connection()->disableQueryLog();
 
 
 <section class="full-height" data-background="/img/caching1.jpg" data-background-transition="fade" data-transition="linear">
-	<h2 class="bar bottom">Caching</h2>
+	<h2 class="bar">Caching</h2>
 </section>
 
 
@@ -1216,6 +1255,137 @@ $active_users = Cache::remember('active-users', $minutes, function()
 </code>
 	</pre>
 </section>
+
+
+<section class="full-height" data-background="/img/mail1.jpg" data-background-transition="fade" data-transition="linear">
+	<h2 class="bar">Mail</h2>
+</section>
+
+
+<section>
+	<h2>Mail Configuration</h2>
+	<ul>
+		<li>
+			Built on top of <a href="//swiftmailer.org/"><i class="fa fa-fw fa-cloud-download"></i> SwiftMailer</a>
+		</li>
+		<li class="fragment">
+			<i class="fa fa-fw fa-file"></i><code>app/config/mail.php</code>
+		</li>
+		<li class="fragment">
+			Drivers:
+			<ul class="caret">
+				<li>smtp</li>
+				<li>mail</li>
+				<li>sendmail</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+
+<section>
+	<h2>Mail Usage</h2>
+	<div class="fragment-block">
+	<pre>
+<code contenteditable data-trim class="php">
+Mail::send('emails.view', $data, function($message)
+{
+	$message->to('colin@example.com', 'Colin Viebrock')
+		->subject('Welcome!');
+});
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+Mail::send( array('emails.view.html', 'emails.view.text'), $data, function($message)
+{
+	$message->to('colin@example.com', 'Colin Viebrock')
+		->subject('Welcome!');
+});
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+Mail::send( array('emails.view.html', 'emails.view.text'), $data, function($message)
+{
+	$message->to('colin@example.com', 'Colin Viebrock')
+		->subject('Welcome!')
+		->cc('bar@example.com')
+		->bcc('snoop@nsa.gov');
+});
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+Mail::send( array('emails.view.html', 'emails.view.text'), $data, function($message)
+{
+	$message->to('colin@example.com', 'Colin Viebrock')
+		->subject('Welcome!')
+		->cc('bar@example.com')
+		->bcc('snoop@nsa.gov');
+
+	$message->attach($pathToFile);
+});
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+Mail::send( array('emails.view.html', 'emails.view.text'), $data, function($message)
+{
+	$message->to('colin@example.com', 'Colin Viebrock')
+		->subject('Welcome!')
+		->cc('bar@example.com')
+		->bcc('snoop@nsa.gov');
+
+	$message->attach($pathToFile, array('as' => $display, 'mime' => $mime));
+});
+</code>
+	</pre>
+	</div>
+</section>
+
+
+<section>
+	<h2>Inline data</h2>
+	<pre>
+<code contenteditable data-trim class="html">
+&lt;body&gt;
+	Here is an image <img src="{{ $message->embed($pathToFile) }}">
+&lt;/body&gt;
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="html">
+&lt;body&gt;
+	Here is raw image data <img src="{{ $message->embedData($data, $name) }}">
+&lt;/body&gt;
+</code>
+	</pre>
+</section>
+
+
+<section>
+	<h2>Queueing Mail</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+Mail::queue('emails.view', $data, function($message)
+{
+	$message->to('colin@example.com', 'Colin Viebrock')
+		->subject('Welcome!');
+});
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+Mail::later($seconds, 'emails.view', $data, function($message)
+{
+	$message->to('colin@example.com', 'Colin Viebrock')
+		->subject('Welcome!');
+});
+</code>
+	</pre>
+</section>
+
 
 
 <section class="full-height" data-background="/img/queues.jpg" data-background-transition="fade" data-transition="linear">
@@ -1368,135 +1538,12 @@ php artisan queue:work
 </section>
 
 
-<section class="full-height" data-background="/img/mail1.jpg" data-background-transition="fade" data-transition="linear">
-	<h2 class="bar bottom">Mail</h2>
+<section data-background="/img/other-features.jpg" data-background-transition="fade" data-transition="linear">
+	<h2 class="bar fragment consecutive">Authentication</h2>
+	<h2 class="bar fragment consecutive">Events</h2>
+	<h2 class="bar fragment consecutive">Localization</h2>
+	<h2 class="bar fragment consecutive">Packages</h2>
 </section>
-
-
-<section>
-	<h2>Mail Configuration</h2>
-	<ul>
-		<li>
-			Built on top of <a href="//swiftmailer.org/"><i class="fa fa-fw fa-cloud-download"></i> SwiftMailer</a>
-		</li>
-		<li class="fragment">
-			<i class="fa fa-fw fa-file"></i><code>app/config/mail.php</code>
-		</li>
-		<li class="fragment">
-			Drivers:
-			<ul class="caret">
-				<li>smtp</li>
-				<li>mail</li>
-				<li>sendmail</li>
-			</ul>
-		</li>
-	</ul>
-</section>
-
-
-<section>
-	<h2>Mail Usage</h2>
-	<div class="fragment-block">
-	<pre>
-<code contenteditable data-trim class="php">
-Mail::send('emails.view', $data, function($message)
-{
-	$message->to('colin@example.com', 'Colin Viebrock')
-		->subject('Welcome!');
-});
-</code>
-	</pre>
-	<pre class="fragment">
-<code contenteditable data-trim class="php">
-Mail::send( array('emails.view.html', 'emails.view.text'), $data, function($message)
-{
-	$message->to('colin@example.com', 'Colin Viebrock')
-		->subject('Welcome!');
-});
-</code>
-	</pre>
-	<pre class="fragment">
-<code contenteditable data-trim class="php">
-Mail::send( array('emails.view.html', 'emails.view.text'), $data, function($message)
-{
-	$message->to('colin@example.com', 'Colin Viebrock')
-		->subject('Welcome!')
-		->cc('bar@example.com')
-		->bcc('snoop@nsa.gov');
-});
-</code>
-	</pre>
-	<pre class="fragment">
-<code contenteditable data-trim class="php">
-Mail::send( array('emails.view.html', 'emails.view.text'), $data, function($message)
-{
-	$message->to('colin@example.com', 'Colin Viebrock')
-		->subject('Welcome!')
-		->cc('bar@example.com')
-		->bcc('snoop@nsa.gov');
-
-	$message->attach($pathToFile);
-});
-</code>
-	</pre>
-	<pre class="fragment">
-<code contenteditable data-trim class="php">
-Mail::send( array('emails.view.html', 'emails.view.text'), $data, function($message)
-{
-	$message->to('colin@example.com', 'Colin Viebrock')
-		->subject('Welcome!')
-		->cc('bar@example.com')
-		->bcc('snoop@nsa.gov');
-
-	$message->attach($pathToFile, array('as' => $display, 'mime' => $mime));
-});
-</code>
-	</pre>
-	</div>
-</section>
-
-
-<section>
-	<h2>Inline data</h2>
-	<pre>
-<code contenteditable data-trim class="html">
-&lt;body&gt;
-	Here is an image <img src="{{ $message->embed($pathToFile) }}">
-&lt;/body&gt;
-</code>
-	</pre>
-	<pre class="fragment">
-<code contenteditable data-trim class="html">
-&lt;body&gt;
-	Here is raw image data <img src="{{ $message->embedData($data, $name) }}">
-&lt;/body&gt;
-</code>
-	</pre>
-</section>
-
-
-<section>
-	<h2>Queueing Mail</h2>
-	<pre>
-<code contenteditable data-trim class="php">
-Mail::queue('emails.view', $data, function($message)
-{
-	$message->to('colin@example.com', 'Colin Viebrock')
-		->subject('Welcome!');
-});
-</code>
-	</pre>
-	<pre class="fragment">
-<code contenteditable data-trim class="php">
-Mail::later($seconds, 'emails.view', $data, function($message)
-{
-	$message->to('colin@example.com', 'Colin Viebrock')
-		->subject('Welcome!');
-});
-</code>
-	</pre>
-</section>
-
 
 <section class="shaded bg-inverse" data-background="/img/books1.jpg" data-background-transition="fade" data-transition="linear">
 	<h2>Further Reading</h2>
