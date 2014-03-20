@@ -989,63 +989,6 @@ Schema::create('post_tag', function(Blueprint $table) {
 </section>
 
 
-
-<section class="full-height" data-background="/img/validate.jpg" data-background-transition="fade">
-	<h2 class="bar bottom">Validation</h2>
-</section>
-
-
-<section>
-	<h2>Validation Rules</h2>
-	<pre>
-<code contenteditable data-trim class="php">
-$data = array(
-	'title' => 'My First Post',
-	'text'  => 'Lorem hipster YOLO sic amet, semiotics banh mi flexitarian.',
-));
-
-$rules = array(
-	'title' => 'required|min:5',
-	'text'  => 'required|max:100'
-);
-</code>
-	</pre>
-</section>
-
-
-<section>
-	<h2>Validation</h2>
-	<pre>
-<code contenteditable data-trim class="php">
-$validator = Validator::make( $data, $rules );
-</code>
-	</pre>
-	<pre class="fragment">
-<code contenteditable data-trim class="php">
-if ( $validator->fails() )       // ->passes()
-{
-	$messages = $validator->messages();
-	…
-}
-</code>
-	</pre>
-	<pre class="fragment">
-<code contenteditable data-trim class="php">
-if ( $messages->has('email') )
-{
-	echo $messages->first('email', '<p>:message</p>');
-}
-</code>
-	</pre>
-	<pre class="fragment">
-<code contenteditable data-trim class="php">
-$messages->get('field');
-$messages->all();
-</code>
-	</pre>
-</section>
-
-
 <section class="full-height" data-background="/img/forms2.jpg" data-background-transition="slide" data-transition="linear">
 	<h2 class="bar bottom">Form Handing</h2>
 </section>
@@ -1103,6 +1046,63 @@ $input = Input::file('upload_field');
 	</pre>
 </section>
 
+
+
+
+<section class="full-height" data-background="/img/validate.jpg" data-background-transition="fade">
+	<h2 class="bar bottom">Validation</h2>
+</section>
+
+
+<section>
+	<h2>Validation Rules</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+$data = array(
+	'title' => 'My First Post',
+	'text'  => 'Lorem hipster YOLO sic amet, semiotics banh mi flexitarian.',
+));
+
+$rules = array(
+	'title' => 'required|min:5',
+	'text'  => 'required|max:100'
+);
+</code>
+	</pre>
+</section>
+
+
+<section>
+	<h2>Validation</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+$validator = Validator::make( $data, $rules );
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+if ( $validator->fails() )       // ->passes()
+{
+	$messages = $validator->messages();
+	…
+}
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+if ( $messages->has('email') )
+{
+	echo $messages->first('email', '<p>:message</p>');
+}
+</code>
+	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+$messages->get('field');
+$messages->all();
+</code>
+	</pre>
+</section>
 
 
 <section class="full-height" data-background="/img/logging1.jpg" data-background-transition="fade" data-transition="linear">
@@ -1498,19 +1498,36 @@ Mail::later($seconds, 'emails.view', $data, function($message)
 </section>
 
 
-<section class="full-height" data-background="/img/thats-all-folks.png" data-background-transition="zoom" data-transition="zoom">
-	<h1 class="thats-all fragment spin-in">That&rsquo;s All Folks!</h1>
-	<div class="more-info fragment">
-		<i class="fa fa-3x fa-github-square"></i>
-		<ul>
-			<li><a href="//github.com/cviebrock/laravel-101">github.com/cviebrock/laravel-101</a></li>
-			<li><a href="//github.com/cviebrock/laravel-101/slides">github.com/cviebrock/laravel-101-slides</a></li>
-		</ul>
-	</div>
+<section class="shaded bg-inverse" data-background="/img/books1.jpg" data-background-transition="fade" data-transition="linear">
+	<h2>Further Reading</h2>
+	<ul class="no-bullet">
+		<li class="fragment">
+			<i class="fa fa-fw fa-lg fa-faded fa-book"></i>
+			<a href="//laravel.com/docs">laravel.com/docs</a>
+		</li>
+		<li class="fragment">
+			<i class="fa fa-fw fa-lg fa-faded fa-comments"></i>
+			<a href="//laravel.io">laravel.io</a>
+		</li>
+		<li class="fragment">
+			<i class="fa fa-fw fa-lg fa-faded fa-github"></i>
+			<a href="//github.com/laravel">github.com/laravel</a>
+		</li>
+		<li class="fragment">
+			<i class="fa fa-fw fa-lg fa-faded fa-youtube-play"></i>
+			<a href="//laracasts.com">laracasts.com</a>
+		</li>
+		<li class="fragment">
+			<i class="fa fa-fw fa-lg fa-faded fa-github"></i>
+			<a href="//github.com/cviebrock">github.com/cviebrock</a>
+		</li>
+	</ul>
 </section>
 
 
-
+<section class="full-height" data-background="/img/thats-all-folks.png" data-background-transition="fade" data-transition="zoom">
+	<h1 class="thats-all fragment spin-in">That&rsquo;s All Folks!</h1>
+</section>
 
 
 

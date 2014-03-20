@@ -125,6 +125,10 @@ $monospaceFont: 'Ubuntu Mono', monospace;
   @import "../../../node_modules/font-awesome/scss/stacked";
   @import "../../../node_modules/font-awesome/scss/icons";
 
+  .fa-faded {
+  	opacity: .5;
+  }
+
 	p {
 		margin-bottom: 1em;
 	}
@@ -166,6 +170,10 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 		margin-bottom: 0.25em;
 	}
 
+	ul.no-bullet {
+		margin-left: 0;
+	}
+
 	ul:not(.no-bullet) li::before {
 		content: "\f105";
 		font-size: .85em;
@@ -188,6 +196,18 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 
 	ul.caret li::before {
 		content: "\f0da";
+	}
+
+	ul li.git-bullet::before {
+		content: "\f09b";
+	}
+
+	ul li.book-bullet::before {
+		content: "\f02d";
+	}
+
+	ul li.laracasts-bullet::before {
+		content: "\f16a";
 	}
 
 	section img.inline {
@@ -424,28 +444,10 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 		height: 100%;
 	}
 
-	.more-info {
-		width: 70%;
-		margin: 0 15%;
-		padding: .5em 1em;
-		background-color: fade-out($black, .25);
-		color: $greyLight;
-		position: absolute;
-		bottom: 0;
-		border-radius: .5em;
-		font-size: 90%;
-
-		a {
-			color: $greyLight;
-		}
-		a:hover {
-			color: $white;
-			border-bottom-color: $white;
-		}
-
-		li {
-			margin: 0;
-		}
+	section.shaded {
+		background: fade-out($black, .25);
+		margin: 0 -50%;
+		width: 200%;
 	}
 
 

@@ -1071,6 +1071,8 @@ body {
     content: "\f195"; }
   .reveal .fa-plus-square-o:before {
     content: "\f196"; }
+  .reveal .fa-faded {
+    opacity: .5; }
   .reveal p {
     margin-bottom: 1em; }
   .reveal .handwriting {
@@ -1097,6 +1099,8 @@ body {
     margin-top: 0.5em; }
   .reveal li > ul li {
     margin-bottom: 0.25em; }
+  .reveal ul.no-bullet {
+    margin-left: 0; }
   .reveal ul:not(.no-bullet) li::before {
     content: "\f105";
     font-size: .85em;
@@ -1114,6 +1118,12 @@ body {
     content: "\f15c"; }
   .reveal ul.caret li::before {
     content: "\f0da"; }
+  .reveal ul li.git-bullet::before {
+    content: "\f09b"; }
+  .reveal ul li.book-bullet::before {
+    content: "\f02d"; }
+  .reveal ul li.laracasts-bullet::before {
+    content: "\f16a"; }
   .reveal section img.inline {
     display: inline-block;
     vertical-align: middle;
@@ -1267,20 +1277,7 @@ body {
       bottom: 1em; }
   .reveal section.full-height {
     height: 100%; }
-  .reveal .more-info {
-    width: 70%;
-    margin: 0 15%;
-    padding: .5em 1em;
-    background-color: rgba(0, 0, 0, 0.75);
-    color: #cccccc;
-    position: absolute;
-    bottom: 0;
-    border-radius: .5em;
-    font-size: 90%; }
-    .reveal .more-info a {
-      color: #cccccc; }
-    .reveal .more-info a:hover {
-      color: white;
-      border-bottom-color: white; }
-    .reveal .more-info li {
-      margin: 0; }
+  .reveal section.shaded {
+    background: rgba(0, 0, 0, 0.75);
+    margin: 0 -50%;
+    width: 200%; }
