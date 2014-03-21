@@ -403,17 +403,27 @@ php artisan routes
 	<h2>Passing Data to Views</h2>
 	<div class="fragment-block">
 		<pre>
-<code contenteditable data-trim class="php" data-filename="app/routes.php">
-Route::get('/hello/{name}', function($name) {
-	return View::make('hello', array('name'=>$name) );
-});
+<code contenteditable data-trim class="php" data-filename="app/controller/HelloController.php">
+class HelloController extends BaseController {
+
+	public function showWelcome($name='stranger')
+	{
+		return View::make('hello', array('name'=>$name) );
+	}
+
+}
 </code>
 		</pre>
 		<pre class="fragment">
-<code contenteditable data-trim class="php" data-filename="app/routes.php">
-Route::get('/hello/{name}', function($name) {
-	return View::make('hello', compact('name') );
-});
+<code contenteditable data-trim class="php" data-filename="app/controller/HelloController.php">
+class HelloController extends BaseController {
+
+	public function showWelcome($name='stranger')
+	{
+		return View::make('hello', compact('name') );
+	}
+
+}
 </code>
 		</pre>
 	</div>
@@ -506,7 +516,7 @@ Route::get('/hello/{name}', function($name) {
 <code contenteditable data-trim class="html" data-filename="app/views/layouts/master.blade.php">
 &lt;html&gt;
 	&lt;body&gt;
-		@include('header')  {{- app/views/header.blade.php -}}
+		@include('header')  {{-- app/views/header.blade.php --}}
 
 		@section('sidebar')
 			This is the master sidebar.
@@ -723,8 +733,8 @@ php artisan migrate:rollback
 <section>
 	<h2>Eloquent</h2>
 	<pre>
-<code contenteditable data-trim class="php">
-class Posts extends Eloquent {}
+<code contenteditable data-trim class="php" data-filename="app/models/Post.php">
+class Post extends Eloquent {}
 </code>
 	</pre>
 </section>
@@ -873,9 +883,9 @@ class Post extends Eloquent {
 		<h2>One-to-One</h2>
 		<pre>
 <code contenteditable data-trim class="php">
-class Post extends Eloquent {
+class Comment extends Eloquent {
 
-	// posts table has an `author_id` field
+	// comments table has an `author_id` field
 
 	public function author()
 	{
@@ -885,7 +895,7 @@ class Post extends Eloquent {
 }
 </code>
 <code contenteditable data-trim class="php">
-$author = Post::find(1)->author;
+$author = Comment::find(1)->author;
 </code>
 		</pre>
 	</section>
@@ -898,15 +908,15 @@ class Author extends Eloquent {
 
 	// authors table needs a `post_id` column
 
-	public function post()
+	public function comment()
 	{
-		return $this->belongsTo('Post');
+		return $this->belongsTo('Comment');
 	}
 
 }
 </code>
 <code contenteditable data-trim class="php">
-$title = Author::find(1)->post->title;
+$title = Author::find(1)->comment->title;
 </code>
 		</pre>
 	</section>
@@ -918,9 +928,9 @@ $title = Author::find(1)->post->title;
 	<h2>One-to-Many</h2>
 	<pre>
 <code contenteditable data-trim class="php">
-class Post extends Eloquent {
+class Book extends Eloquent {
 
-	// posts table has `author_id` column
+	// books table has `author_id` column
 
 	public function author()
 	{
@@ -931,15 +941,15 @@ class Post extends Eloquent {
 
 class Author extends Eloquent {
 
-	public function posts()
+	public function books()
 	{
-		return $this->hasMany('Post');
+		return $this->hasMany('Book');
 	}
 
 }
 </code>
 <code contenteditable data-trim class="php">
-$my_posts = Author::where('firstname','=','Colin')->posts
+$my_books = Author::where('firstname','=','Colin')->books;
 </code>
 	</pre>
 </section>
@@ -952,7 +962,7 @@ $my_posts = Author::where('firstname','=','Colin')->posts
 		<h2>Many-to-Many</h2>
 		<pre>
 <code contenteditable data-trim class="php">
-class Post extends Eloquent {
+class Book extends Eloquent {
 	public function tags()
 	{
 		return $this->belongsToMany('Tag');
@@ -960,9 +970,9 @@ class Post extends Eloquent {
 }
 
 class Tag extends Eloquent {
-	public function posts()
+	public function books()
 	{
-		return $this->belongsToMany('Post');
+		return $this->belongsToMany('Book');
 	}
 }
 </code>
@@ -973,9 +983,9 @@ class Tag extends Eloquent {
 		<h2>Pivot Table</h2>
 		<pre>
 <code contenteditable data-trim class="php">
-Schema::create('post_tag', function(Blueprint $table) {
+Schema::create('book_tag', function(Blueprint $table) {
 	$table->increments('id');
-	$table->integer('post_id')->unsigned()->index();
+	$table->integer('book_id')->unsigned()->index();
 	$table->integer('tag_id')->unsigned()->index();
 });
 </code>
@@ -989,17 +999,17 @@ Schema::create('post_tag', function(Blueprint $table) {
 	<h2>Eager Loading</h2>
 	<pre>
 <code contenteditable data-trim class="php">
-Post::with('author')->get();
+Book::with('author')->get();
 </code>
 	</pre>
 	<pre class="fragment">
 <code contenteditable data-trim class="php">
-Post::with('author','tags')->get();
+Book::with('author','tags')->get();
 </code>
 	</pre>
 	<pre class="fragment">
 <code contenteditable data-trim class="php">
-Tag::with('posts.author')->get();
+Tag::with('books.author')->get();
 </code>
 	</pre>
 </section>
@@ -1017,10 +1027,10 @@ Tag::with('posts.author')->get();
 {{ Form::open() }}
 
 {{ Form::label('title') }}
-{{ Form::text('title', null, array('class'=>'form-control') }}
+{{ Form::text('title', 'default', array('class'=>'form-control') }}
 
 {{ Form::label('text', 'Enter the full text:') }}
-{{ Form::textarea('text', null, array('placeholder'=>'Enter the text') }}
+{{ Form::textarea('text', 'default', array('placeholder'=>'Enter the text') }}
 
 {{ Form::email('email') }}
 
@@ -1063,6 +1073,26 @@ $input = Input::file('upload_field');
 </section>
 
 
+<section>
+	<h2>Form Model Binding</h2>
+	<pre>
+<code contenteditable data-trim class="php">
+$book = Book::findOrFail($id);
+return View::make('books.edit', compact('book'));
+</code>
+	</pre>
+	<pre>
+<code contenteditable data-trim class="php">
+{{ Form::model($book, array('route'=>array('books.update', $book->id), 'method'=>'PUT') ) }}
+
+{{ Form::text('title')}}
+{{ Form::textarea('description')}}
+…
+
+{{ Form::close() }}
+</code>
+	</pre>
+</section>
 
 
 <section class="full-height" data-background="/img/validate.jpg" data-background-transition="fade">
@@ -1080,8 +1110,8 @@ $data = array(
 ));
 
 $rules = array(
-	'title' => 'required|min:5',
-	'text'  => 'required|max:100'
+	'title'        => 'required|min:5',
+	'description'  => 'required|max:100'
 );
 </code>
 	</pre>
@@ -1239,6 +1269,11 @@ $value = Cache::get('key', function() { return 'default'; });
 $value = Cache::forever('key', 'value');
 </code>
 	</pre>
+	<pre class="fragment">
+<code contenteditable data-trim class="php">
+Cache::forget('key');
+</code>
+	</pre>
 </section>
 
 
@@ -1246,11 +1281,11 @@ $value = Cache::forever('key', 'value');
 	<h2>Advanced Cache Usage</h2>
 	<pre>
 <code contenteditable data-trim class="php">
-$active_users = Cache::remember('active-users', $minutes, function()
+$books = Cache::remember('all-books', 10, function()
 {
-    return Users::where('active',true)
-    	->orderBy('lastname')
-    	->get();
+	return Book::with('author')
+		->orderBy('title')
+		->get();
 });
 </code>
 	</pre>
@@ -1477,9 +1512,9 @@ Queue::later($date, 'MyJob', $data);
 <code contenteditable data-trim class="php">
 public function fire($job, $data)
 {
-    // Process the job...
+		// Process the job...
 
-    $job->delete();
+		$job->delete();
 }
 </code>
 	</pre>
@@ -1487,9 +1522,9 @@ public function fire($job, $data)
 <code contenteditable data-trim class="php">
 public function fire($job, $data)
 {
-    // Process the job...
+		// Process the job...
 
-    $job->release();
+		$job->release();
 }
 </code>
 	</pre>
@@ -1553,12 +1588,16 @@ php artisan queue:work
 			<a href="//laravel.com/docs">laravel.com/docs</a>
 		</li>
 		<li class="fragment">
-			<i class="fa fa-fw fa-lg fa-faded fa-comments"></i>
-			<a href="//laravel.io">laravel.io</a>
+			<i class="fa fa-fw fa-lg fa-faded fa-cogs"></i>
+			<a href="//laravel.com/docs">laravel.com/api</a>
 		</li>
 		<li class="fragment">
 			<i class="fa fa-fw fa-lg fa-faded fa-github"></i>
 			<a href="//github.com/laravel">github.com/laravel</a>
+		</li>
+		<li class="fragment">
+			<i class="fa fa-fw fa-lg fa-faded fa-comments"></i>
+			<a href="//laravel.io">laravel.io</a>
 		</li>
 		<li class="fragment">
 			<i class="fa fa-fw fa-lg fa-faded fa-youtube-play"></i>

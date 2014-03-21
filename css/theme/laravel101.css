@@ -30,7 +30,7 @@ body {
 
 .reveal {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-size: 36px;
+  font-size: 32px;
   font-weight: normal;
   letter-spacing: -0.02em;
   color: #333333; }
@@ -1297,6 +1297,8 @@ body {
       margin-top: 0.5em;
       margin-bottom: 0.5em;
       font-size: 2.5em; }
+      .reveal h2.bar.consecutive:first-child {
+        margin-top: 1em; }
   .reveal section.full-height {
     height: 100%; }
   .reveal section.shaded {

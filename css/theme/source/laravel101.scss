@@ -56,7 +56,7 @@ $backgroundColor: $white;
 
 // Primary/body text
 $mainFont: 'Open Sans', Helvetica, Arial, sans-serif;
-$mainFontSize: 36px;
+$mainFontSize: 32px;
 $mainColor: $greyDarker;
 
 // Headings
@@ -457,6 +457,10 @@ $monospaceFont: 'Ubuntu Mono', monospace;
 			margin-top: 0.5em;
 			margin-bottom: 0.5em;
 			font-size: 2.5em;
+
+			&:first-child {
+				margin-top: 1em;
+			}
 		}
 
 	}
