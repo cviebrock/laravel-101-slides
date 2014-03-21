@@ -142,6 +142,9 @@ composer install
 	<div class="fragment wat skewed stamp-in" >
 		<img src="/img/wat.jpg">
 	</div>
+	<aside class="notes">
+<i class="fa fa-fw fa-terminal"></i> composer create-project laravel/laravel my-project --prefer-dist
+	</aside>
 </section>
 
 
@@ -223,11 +226,15 @@ php artisan
 
 	<section>
 		<h2>Built-in Server</h2>
-			<pre>
+		<pre>
 <code contenteditable data-trim class="bash">
 php artisan serve --port 8000
 </code>
-			</pre>
+		</pre>
+		<aside class="notes">
+			<i class="fa fa-fw fa-terminal"></i> php artisan serve<br>
+			<i class="fa fa-fw fa-compass"></i> localhost:8000
+		</aside>
 	</section>
 
 </section>
@@ -240,13 +247,17 @@ php artisan serve --port 8000
 
 <section>
 	<h2>Basic Routing</h2>
-		<pre>
+	<pre>
 <code contenteditable data-trim class="php" data-filename="app/routes.php">
 Route::get('/', function() {
 	return 'Hello World!';
 });
 </code>
-		</pre>
+	</pre>
+	<aside class="notes">
+		<i class="fa fa-fw fa-terminal"></i> git checkout v2.0
+		<i class="fa fa-fw fa-compass"></i> localhost:8000
+	</aside>
 </section>
 
 
@@ -295,6 +306,10 @@ Route::get('/hello/{name?}', function($name='stranger')
 </code>
 		</pre>
 	</div>
+	<aside class="notes">
+<i class="fa fa-fw fa-terminal"></i> git checkout v2.1<br>
+<i class="fa fa-fw fa-compass"></i> /hello/Colin
+	</aside>
 </section>
 
 
@@ -305,6 +320,9 @@ Route::get('/hello/{name?}', function($name='stranger')
 php artisan routes
 </code>
 	</pre>
+	<aside class="notes">
+		<i class="fa fa-fw fa-terminal"></i> php artisan routes<br>
+	</aside>
 </section>
 
 <section class="full-height" data-background="/img/vintage-controller1.jpg" data-background-transition="slide" data-transition="linear">
@@ -331,6 +349,10 @@ class HelloController extends BaseController {
 }
 </code>
 	</pre>
+	<aside class="notes">
+		<i class="fa fa-fw fa-terminal"></i> git checkout v3.0<br>
+		<i class="fa fa-fw fa-compass"></i> /hello/colin<br>
+	</aside>
 </section>
 
 
@@ -356,6 +378,11 @@ class UsersController extends BaseController {
 }
 </code>
 	</pre>
+	<aside class="notes">
+<i class="fa fa-fw fa-terminal"></i> git checkout v3.0<br>
+<i class="fa fa-fw fa-pencil"></i> app/routes.php<br>
+<i class="fa fa-fw fa-pencil"></i> app/controllers/UsersController.php
+	</aside>
 </section>
 
 
@@ -391,6 +418,12 @@ class PostsController extends BaseController {
 php artisan routes
 </code>
 	</pre>
+	<aside class="notes">
+<i class="fa fa-fw fa-terminal"></i> php artisan controller:make PostsController<br>
+<i class="fa fa-fw fa-pencil"></i> app/routes.php<br>
+<i class="fa fa-fw fa-pencil"></i> app/controllers/PostsController.php<br>
+<i class="fa fa-fw fa-terminal"></i> php artisan routes<br>
+	</aside>
 </section>
 
 
@@ -447,6 +480,11 @@ class HelloController extends BaseController {
 </code>
 		</pre>
 	</div>
+	<aside class="notes">
+<i class="fa fa-fw fa-terminal"></i> git checkout 4.0<br>
+<i class="fa fa-fw fa-pencil"></i> app/controllers/HelloController.php<br>
+<i class="fa fa-fw fa-pencil"></i> app/views/hello.blade.php<br>
+	</aside>
 </section>
 
 
@@ -543,6 +581,9 @@ class HelloController extends BaseController {
 @stop
 </code>
 		</pre>
+		<aside class="notes">
+			<i class="fa fa-fw fa-terminal"></i> git checkout v4.1<br>
+		</aside>
 	</section>
 
 </section>
@@ -623,6 +664,9 @@ return array(
 );
 </code>
 		</pre>
+		<aside class="notes">
+			<i class="fa fa-fw fa-terminal"></i> git checkout v5.0<br>
+		</aside>
 	</section>
 
 </section>
@@ -642,9 +686,13 @@ return array(
 <code contenteditable data-trim class="bash">
 php artisan migrate:install
 
-php artisan migrate:make create_posts_table
+php artisan migrate:make create_posts_table --create="posts"
 </code>
 		</pre>
+		<aside class="notes">
+			<i class="fa fa-fw fa-terminal"></i> php artisan migrate:install<br>
+			<i class="fa fa-fw fa-terminal"></i> php artisan migrate:make create_posts_table --create="posts"<br>
+		</aside>
 	</section>
 
 	<section>
@@ -720,6 +768,9 @@ php artisan migrate:rollback
 </code>
 			</pre>
 		</div>
+		<aside class="notes">
+			<i class="fa fa-fw fa-folder"></i> SQL<br>
+		</aside>
 	</section>
 
 </section>
@@ -754,6 +805,12 @@ $post = Post::create(
 );
 </code>
 		</pre>
+		<aside class="notes">
+			<i class="fa fa-fw fa-terminal"></i> git checkout v5.1<br>
+			<i class="fa fa-fw fa-pencil"></i> app/routes.php<br>
+			<i class="fa fa-fw fa-compass"></i> /make-post<br>
+			<i class="fa fa-fw fa-folder"></i> SQL<br>
+		</aside>
 	</section>
 
 	<section>
@@ -866,6 +923,13 @@ class Post extends Eloquent {
 }
 </code>
 		</pre>
+		<aside class="notes">
+			<i class="fa fa-fw fa-terminal"></i> git checkout v5.2<br>
+			<i class="fa fa-fw fa-pencil"></i> app/models/Post.php<br>
+			<i class="fa fa-fw fa-pencil"></i> app/routes.php<br>
+			<i class="fa fa-fw fa-compass"></i> /make-post<br>
+			<i class="fa fa-fw fa-folder"></i> SQL<br>
+		</aside>
 	</section>
 </section>
 
@@ -992,6 +1056,15 @@ Schema::create('book_tag', function(Blueprint $table) {
 		</pre>
 	</section>
 
+	<aside class="notes">
+		<i class="fa fa-fw fa-terminal"></i> git checkout v6.0<br>
+		<i class="fa fa-fw fa-pencil"></i> app/model/Book.php<br>
+		<i class="fa fa-fw fa-pencil"></i> app/model/Author.php<br>
+		<i class="fa fa-fw fa-pencil"></i> app/model/Tags.php<br>
+		<i class="fa fa-fw fa-terminal"></i> php artisan migrate<br>
+		<i class="fa fa-fw fa-terminal"></i> php artisan db:seed<br>
+		<i class="fa fa-fw fa-folder"></i> SQL<br>
+	</aside>
 </section>
 
 
@@ -1210,6 +1283,11 @@ $queries = DB::getQueryLog();
 DB::connection()->disableQueryLog();
 </code>
 	</pre>
+	<aside class="notes">
+		<i class="fa fa-fw fa-terminal"></i> git checkout v6.1<br>
+		<i class="fa fa-fw fa-compass"></i> /books<br>
+		<i class="fa fa-fw fa-compass"></i> /books/1<br>
+	</aside>
 </section>
 
 
@@ -1289,6 +1367,11 @@ $books = Cache::remember('all-books', 10, function()
 });
 </code>
 	</pre>
+	<aside class="notes">
+		<i class="fa fa-fw fa-pencil"></i> app/controllers/BookController.php<br>
+		<i class="fa fa-fw fa-compass"></i> /books<br>
+		etc.
+	</aside>
 </section>
 
 
