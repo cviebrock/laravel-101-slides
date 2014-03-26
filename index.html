@@ -1468,14 +1468,14 @@ Mail::send( array('emails.view.html', 'emails.view.text'), $data, function($mess
 	<pre>
 <code contenteditable data-trim class="html">
 &lt;body&gt;
-	Here is an image <img src="{{ $message->embed($pathToFile) }}">
+	Here is an image &lt;img src="{{ $message->embed($pathToFile) }}"&gt;
 &lt;/body&gt;
 </code>
 	</pre>
 	<pre class="fragment">
 <code contenteditable data-trim class="html">
 &lt;body&gt;
-	Here is raw image data <img src="{{ $message->embedData($data, $name) }}">
+	Here is raw image data &lt;img src="{{ $message->embedData($data, $name) }}"&gt;
 &lt;/body&gt;
 </code>
 	</pre>
